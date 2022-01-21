@@ -160,6 +160,8 @@ syscall_list = {"clone":["clone","clone2","clone3"],
 "connect":["connect"],
 "accept":["accept"],
 "accept4":["accept4"],
+"read":["read"],
+"write":["write"],
 "bind":["bind"]
 }
 

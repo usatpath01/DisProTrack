@@ -220,7 +220,7 @@ if __name__ == '__main__':
     #    print("Please provide the log file in the cmdline")
 
     # Parding teh audit log
-    parse_audit_log("../../LOGS_0311/audit_ap2.json")
+    parse_audit_log("audit_164m.json")
 
     # #print("ACCESS LOG--->")
     # parse_acess_log("../logs/apache/rst1996/home/augumentedLogs/access.log")
@@ -229,10 +229,10 @@ if __name__ == '__main__':
     # #parse_error_log("../omegalog_implementation/logs/apache/rst1996/home/augumentedLogs/error.log")
     # parse_error_log("../logs/apache/testerror.log")
     
-    parse_error_log('../../LOGS_0311/access_1640089505.log')
+    parse_error_log('samplelogs/access_1640089505.log')
     # print('\n\n************Apache access log parsed\n\n')
 
-    parse_error_log('../../LOGS_0311/error_1640089505.log')
+    parse_error_log('samplelogs/error_1640089505.log')
     # print('\n\n************Apache access log parsed\n\n')
 
     # parse_error_log('mysql_logs/error_1633698258.log')
