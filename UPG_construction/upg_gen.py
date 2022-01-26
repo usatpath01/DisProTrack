@@ -26,7 +26,7 @@ def load_log(): #Function to load the log file from json file
 	return data
 
 def isAppEntry(event): #To find the lms log as the entry log(This is for apache for now update the json to add a field for application logs)
-	if len(event)==3 and "lms" in event:
+	if len(event)==4 and "lms" in event:
 		return 1
 	return 0
 
@@ -82,7 +82,7 @@ def match_lms(lms_cand, lms_graph, lms_state, eventUnit, data):
 			# regex_lms = lms_graph.nodes[node]["lms"]
 			pattern = re.compile(regex_lms)
 			if pattern.fullmatch(data["lms"]):
-				print('LOG:: ', data['lms'], " |M: ", regex_lms)
+				# print('LOG:: ', data['lms'], " |M: ", regex_lms)
 				candidates_lms.append(node)
 
 	if len(candidates_lms)>0: #find the node with the highest rank if it matches
@@ -154,16 +154,18 @@ eventUnit = {}
 lms_state = None #This has to be made a list if trying for multiple applications(It is for 1 application only for now)
 end_unit = 0
 G = []
-# net_graph = nx.DiGraph()
 net_graph = nx.DiGraph()
+# net_graph = nx.MultiGraph()
 #Now interating only for first 20 logs
 logs_range = len(data)
 for i in range(0,logs_range):
+	if len(data[i]) < 3:
+		continue
 	# print(i)
 	if isAppEntry(data[i]): 
 		if lms_state == None: #if the log is the first log of the application 
 			lms_cand = get_lms_regex(data[i]["lms"],lms_graph) #Do exhaustive search to find lms node
-			print(i, " : LOG : ", data[i]["lms"], " || Candidate: ", lms_cand)
+			# print(i, " : LOG : ", data[i]["lms"], " || Candidate: ", lms_cand)
 			lms_state = lms_cand
 			if(lms_state == None):
 				continue
@@ -172,7 +174,7 @@ for i in range(0,logs_range):
 		else:
 			temp,end_unit = match_lms(lms_cand, lms_graph, lms_state, eventUnit, data[i]) #else use their neighbours to find the lms node
 
-			print(i, " : LOG : ", data[i]["lms"], " || Next Candidate: ", temp, " EndUnit ", end_unit)
+			# print(i, " : LOG : ", data[i]["lms"], " || Next Candidate: ", temp, " EndUnit ", end_unit)
 			if temp!=None:
 				lms_state = temp
 			else:
@@ -186,7 +188,7 @@ for i in range(0,logs_range):
 		eventUnit[lms_pid].append(data[i]["lms"])
 		G.append(eventUnit[lms_pid])
 		end_unit = 0
-		print(i, " PID ", lms_pid, " partitioned")
+		# print(i, " PID ", lms_pid, " partitioned")
 		if lms_pid in eventUnit:
 			del eventUnit[lms_pid]
 
@@ -207,6 +209,8 @@ for i in range(0,logs_range):
 			temp_dict = {}
 			if "srn" in data[i]:
 				temp_dict["srn"] = data[i]["srn"]
+				if (temp_dict["srn"] in ["4486", "3857"]):
+					ttt = 1
 			else:
 				temp_dict["srn"] = None
 
@@ -237,6 +241,8 @@ for i in range(0,logs_range):
 
 			temp_dict["pid"] = lms_pid
 
+
+			#make modification such that in case sock addr is present then add that in sock_path as well
 			if "sock_path" in data[i]:
 				temp_dict["sock_path"] = data[i]["sock_path"]
 			else:
@@ -249,8 +255,13 @@ for i in range(0,logs_range):
 
 			if "sock_lport" in data[i]:
 				temp_dict["sock_lport"] = data[i]["sock_lport"]
+
+				temp_dict["sock_path"] = str(temp_dict["sock_laddr"]) +":" + str(temp_dict["sock_lport"])
 			else:
 				temp_dict["sock_lport"] = None
+
+			
+
 
 			if "exit" in data[i]:
 				temp_dict['exit'] = data[i]['exit']
@@ -258,7 +269,7 @@ for i in range(0,logs_range):
 				temp_dict['exit'] = None
 
 			if 'arg0' in data[i]:
-				temp_dict['arg0'] = data[i]['arg0']
+				temp_dict['arg0'] =  str(int(data[i]['arg0'], 16))
 			else:
 				temp_dict['arg0'] = None
 				
@@ -270,19 +281,28 @@ for i in range(0,logs_range):
 					if temp_dict["pid"] not in fd_map:
 						fd_map[temp_dict["pid"]]  = {}
 					
-					#if temp_dict['exit'] in fd_map[temp_dict["pid"]]:
 					if "path_name" in data[i]:
 						fd_map[temp_dict["pid"]][temp_dict['exit']] = temp_dict["path_name"]
 					elif "sock_path" in temp_dict:
 						fd_map[temp_dict["pid"]][temp_dict['exit']] = temp_dict["sock_path"]
-					elif "sock_laddr" in temp_dict and "sock_lport" in temp_dict:
-						fd_map[temp_dict["pid"]][temp_dict['exit']] = temp_dict["sock_laddr"] + temp_dict["sock_lport"]	
+					print("Stored name :: ",temp_dict["srn"],temp_dict["syscall_name"], temp_dict["pid"], temp_dict['exit'], fd_map[temp_dict["pid"]][temp_dict['exit']])
+
+				elif ( temp_dict["syscall_name"]  in ["connect"]):
+					if temp_dict["pid"] not in fd_map:
+						fd_map[temp_dict["pid"]]  = {}
+					if "path_name" in data[i]:
+						fd_map[temp_dict["pid"]][temp_dict['arg0']] = temp_dict["path_name"]
+					elif "sock_path" in temp_dict:
+						fd_map[temp_dict["pid"]][temp_dict['arg0']] = temp_dict["sock_path"]
+					print("Stored name :: ",temp_dict["srn"],temp_dict["syscall_name"], temp_dict["pid"], temp_dict['arg0'], fd_map[temp_dict["pid"]][temp_dict['arg0']])
+					pass
 				
 				elif( temp_dict["syscall_name"]  in ["close", "write","read"]): 
 					if(temp_dict["pid"] in fd_map and temp_dict['arg0'] is not None ):
-						tmp_fd = str(int(temp_dict['arg0'], 16))
+						tmp_fd = temp_dict['arg0']
 						if(tmp_fd in fd_map[temp_dict["pid"]]):
 							temp_dict["path_name"] = fd_map[temp_dict["pid"]][tmp_fd]
+						print("Resolved Name :: ",temp_dict["srn"],temp_dict["syscall_name"], temp_dict["pid"],tmp_fd, temp_dict["path_name"])
 			else:
 				temp_dict["syscall_name"] = None
 
@@ -293,40 +313,22 @@ for i in range(0,logs_range):
 				if syscall_cnt[lms_pid]==0:
 					G.append(eventUnit[lms_pid])
 					del eventUnit[lms_pid]
-					print(i, " PID ", lms_pid, " partitioned")
-
-		# elif "pid" in data[i]:
-		# 	lms_pid = str(data[i]["pid"]).strip()
-		# 	if lms_pid not in eventUnit:
-		# 		eventUnit[lms_pid] = []
-		# 	if "lms" in data[i]:
-		# 		eventUnit[lms_pid].append(data[i]["lms"])
+					# print(i, " PID ", lms_pid, " partitioned")
 	
 
-# #add the remaining part in the execution partition 
+#add the remaining part in their execution partition based on PIDs
 pids = eventUnit.keys()
 for lms_pid in pids:
 	G.append(eventUnit[lms_pid])
 
-# ap_ppids = ['3552', '3553','3554', '3555', '3556', '3557', '3570']
-# for lms_pid in ap_ppids:
-# 	if lms_pid in eventUnit:
-# 		G.append(eventUnit[lms_pid])
-
-	# del eventUnit[lms_pid]
-	# final = time.time_ns()
-	# print(final-initial)
-# print(eventUnit)
-# pp = pprint.PrettyPrinter(indent=4)
-# for node in G:
-# 	pp.pprint(node)
-
-# with open("sample_output_eventUnit.json","w") as outfile:
-#   json.dump(eventUnit,outfile,indent = 4)
+#clearing the data from memory
+eventUnit.clear()
 
 with open("partitioned_logs.json","w") as outfile:
   json.dump(G,outfile,indent = 4)
 
+
+aud_map = {}
 partition = 0
 for execution_unit in G:
 	partition+=1
@@ -335,29 +337,34 @@ for execution_unit in G:
 			# net_graph.add_edge(str(log["exe"]),str(log["path_name"]))
 			
 			if "syscall_name" in log:
+				lbl = str(log["syscall_name"]) + "("+ str(log["srn"])+")"
 				process = ""
 				if ("pid" in log):
 					process = "["+str(log['pid'])+"]"
 				process += str(log["exe"])+"_"+str(partition)
-				# "openat","open",
+				# "openat","open", was removed from here
 				if str(log["syscall_name"]) in ["creat","unlink","unlinkat","execve","write"]:
-					# pp = ""
-					# if ("pid" in log):
-					# 	pp = "["+str(log['pid'])+"]"
-					# net_graph.add_edge(pp+str(log["exe"])+"_"+str(partition),str(log["path_name"]),label = str(log["syscall_name"]))
-					net_graph.add_edge(process,str(partition)+"_" + str(log["path_name"]),label = str(log["syscall_name"]))
+					net_graph.add_edge(process,str(partition)+"_" + str(log["path_name"]),label = lbl)
+					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["path_name"])
 				elif str(log["syscall_name"]) in ["unlink","unlinkat"]:
-					net_graph.add_edge(process,str(partition)+"_" + str(log["path_name_old"]),label = str(log["syscall_name"]))				
+					net_graph.add_edge(process,str(partition)+"_" + str(log["path_name_old"]),label = lbl)				
+					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["path_name_old"])
 				elif str(log["syscall_name"]) in ["connect","bind"]:
-					net_graph.add_edge(process,str(partition)+"_" + str(log["sock_laddr"])+" "+str(log["sock_lport"]),label = str(log["syscall_name"]))
+					net_graph.add_edge(process,str(partition)+"_" + str(log["sock_laddr"])+":"+str(log["sock_lport"]),label = lbl)
+					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["sock_laddr"])+":"+str(log["sock_lport"])
 				elif str(log["syscall_name"]) in ["accept4","accept"]:
-					net_graph.add_edge(str(partition)+"_" + str(log["sock_laddr"])+" "+str(log["sock_lport"]),process,label = str(log["syscall_name"]))
+					net_graph.add_edge(str(partition)+"_" + str(log["sock_laddr"])+" "+str(log["sock_lport"]),process,label = lbl)
+					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["sock_laddr"])+" "+str(log["sock_lport"])
 				elif str(log["syscall_name"]) in ["read"]:
-					net_graph.add_edge(str(partition)+"_" + str(log["path_name"]),process,label = str(log["syscall_name"]))
+					net_graph.add_edge(str(partition)+"_" + str(log["path_name"]),process,label = lbl)
+					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["path_name"])
 
 json_converted = json_graph.node_link_data(net_graph)
 with open("upg.json","w") as outfile:
   json.dump(json_converted,outfile,indent = 4)
+
+with open("aud_map.json", "w") as op:
+	json.dump(aud_map, op, indent=1)
 
 nt = Network('1800px','1200px',directed=True, notebook=True)
 nt.show_buttons(filter_=['physics'])
