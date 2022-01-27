@@ -3,6 +3,11 @@
 #   Author : Abhyanand Sharma
 #   Date : 27th Jan, 2022
 #=============================================================
+#  ==================  USAGE  ================================
+#  python3 final_forward_tracing.py -B <symptom node>
+#  python3 final_forward_tracing.py -S <parent node>
+#  python3 final_forward_tracing.py -G y
+#  ===========================================================
 
 import json
 import matplotlib.pyplot as plt
