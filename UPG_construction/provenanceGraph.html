@@ -1,0 +1,227 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1200px;
+            height: 1800px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+        #loadingBar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width: 1200px;
+            height: 1800px;
+            background-color:rgba(200,200,200,0.8);
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            opacity:1;
+        }
+
+        #bar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:20px;
+            height:20px;
+            margin:auto auto auto auto;
+            border-radius:11px;
+            border:2px solid rgba(30,30,30,0.05);
+            background: rgb(0, 173, 246); /* Old browsers */
+            box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+        }
+
+        #border {
+            position:absolute;
+            top:10px;
+            left:10px;
+            width:500px;
+            height:23px;
+            margin:auto auto auto auto;
+            box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+            border-radius:10px;
+        }
+
+        #text {
+            position:absolute;
+            top:8px;
+            left:530px;
+            width:30px;
+            height:50px;
+            margin:auto auto auto auto;
+            font-size:22px;
+            color: #000000;
+        }
+
+        div.outerBorder {
+            position:relative;
+            top:400px;
+            width:600px;
+            height:44px;
+            margin:auto auto auto auto;
+            border:8px solid rgba(0,0,0,0.1);
+            background: rgb(252,252,252); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+            border-radius:72px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+<div id="loadingBar">
+    <div class="outerBorder">
+        <div id="text">0%</div>
+        <div id="border">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "[2603]/usr/sbin/apache2_1", "label": "[2603]/usr/sbin/apache2_1", "shape": "dot", "size": 10}, {"id": "1_/lib64/ld-linux-x86-64.so.2", "label": "1_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "1_None None", "label": "1_None None", "shape": "dot", "size": 10}, {"id": "1_:: 0", "label": "1_:: 0", "shape": "dot", "size": 10}, {"id": "1_:: 80", "label": "1_:: 80", "shape": "dot", "size": 10}, {"id": "1_0.0.0.0 80", "label": "1_0.0.0.0 80", "shape": "dot", "size": 10}, {"id": "1_None", "label": "1_None", "shape": "dot", "size": 10}, {"id": "1_0.0.0.0 0", "label": "1_0.0.0.0 0", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libpcre.so.3", "label": "1_/lib/x86_64-linux-gnu/libpcre.so.3", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libaprutil-1.so.0", "label": "1_/lib/x86_64-linux-gnu/libaprutil-1.so.0", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libapr-1.so.0", "label": "1_/lib/x86_64-linux-gnu/libapr-1.so.0", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libpthread.so.0", "label": "1_/lib/x86_64-linux-gnu/libpthread.so.0", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libc.so.6", "label": "1_/lib/x86_64-linux-gnu/libc.so.6", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libcrypt.so.1", "label": "1_/lib/x86_64-linux-gnu/libcrypt.so.1", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libexpat.so.1", "label": "1_/lib/x86_64-linux-gnu/libexpat.so.1", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libuuid.so.1", "label": "1_/lib/x86_64-linux-gnu/libuuid.so.1", "shape": "dot", "size": 10}, {"id": "1_/lib/x86_64-linux-gnu/libdl.so.2", "label": "1_/lib/x86_64-linux-gnu/libdl.so.2", "shape": "dot", "size": 10}, {"id": "1_/dev/urandom", "label": "1_/dev/urandom", "shape": "dot", "size": 10}, {"id": "1_/etc/gai.conf", "label": "1_/etc/gai.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/apache2.conf", "label": "1_/etc/apache2/apache2.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/access_compat.load", "label": "1_/etc/apache2/mods-enabled/access_compat.load", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/auth_basic.load", "label": "1_/etc/apache2/mods-enabled/auth_basic.load", "shape": "dot", "size": 10}, {"id": "1_/usr/lib/apache2/modules/mod_access_compat.so", "label": "1_/usr/lib/apache2/modules/mod_access_compat.so", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/authz_host.load", "label": "1_/etc/apache2/mods-enabled/authz_host.load", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/filter.load", "label": "1_/etc/apache2/mods-enabled/filter.load", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/mime.load", "label": "1_/etc/apache2/mods-enabled/mime.load", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/reqtimeout.load", "label": "1_/etc/apache2/mods-enabled/reqtimeout.load", "shape": "dot", "size": 10}, {"id": "1_/usr/lib/apache2/modules/mod_reqtimeout.so", "label": "1_/usr/lib/apache2/modules/mod_reqtimeout.so", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/setenvif.load", "label": "1_/etc/apache2/mods-enabled/setenvif.load", "shape": "dot", "size": 10}, {"id": "1_/usr/lib/apache2/modules/mod_setenvif.so", "label": "1_/usr/lib/apache2/modules/mod_setenvif.so", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/status.load", "label": "1_/etc/apache2/mods-enabled/status.load", "shape": "dot", "size": 10}, {"id": "1_/usr/lib/apache2/modules/mod_status.so", "label": "1_/usr/lib/apache2/modules/mod_status.so", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/alias.conf", "label": "1_/etc/apache2/mods-enabled/alias.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/autoindex.conf", "label": "1_/etc/apache2/mods-enabled/autoindex.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/deflate.conf", "label": "1_/etc/apache2/mods-enabled/deflate.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/dir.conf", "label": "1_/etc/apache2/mods-enabled/dir.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/mime.conf", "label": "1_/etc/apache2/mods-enabled/mime.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/mpm_prefork.conf", "label": "1_/etc/apache2/mods-enabled/mpm_prefork.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/negotiation.conf", "label": "1_/etc/apache2/mods-enabled/negotiation.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/php7.4.conf", "label": "1_/etc/apache2/mods-enabled/php7.4.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/reqtimeout.conf", "label": "1_/etc/apache2/mods-enabled/reqtimeout.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/setenvif.conf", "label": "1_/etc/apache2/mods-enabled/setenvif.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/status.conf", "label": "1_/etc/apache2/mods-enabled/status.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/ports.conf", "label": "1_/etc/apache2/ports.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/conf-enabled/apache2-doc.conf", "label": "1_/etc/apache2/conf-enabled/apache2-doc.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/conf-enabled/charset.conf", "label": "1_/etc/apache2/conf-enabled/charset.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/conf-enabled/localized-error-pages.conf", "label": "1_/etc/apache2/conf-enabled/localized-error-pages.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/conf-enabled/other-vhosts-access-log.conf", "label": "1_/etc/apache2/conf-enabled/other-vhosts-access-log.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/conf-enabled/security.conf", "label": "1_/etc/apache2/conf-enabled/security.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/conf-enabled/serve-cgi-bin.conf", "label": "1_/etc/apache2/conf-enabled/serve-cgi-bin.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/sites-enabled/000-default.conf", "label": "1_/etc/apache2/sites-enabled/000-default.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/nsswitch.conf", "label": "1_/etc/nsswitch.conf", "shape": "dot", "size": 10}, {"id": "1_/etc/passwd", "label": "1_/etc/passwd", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/mpm_prefork.load", "label": "1_/etc/apache2/mods-enabled/mpm_prefork.load", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/mods-enabled/negotiation.load", "label": "1_/etc/apache2/mods-enabled/negotiation.load", "shape": "dot", "size": 10}, {"id": "1_/etc/apache2/conf-enabled", "label": "1_/etc/apache2/conf-enabled", "shape": "dot", "size": 10}, {"id": "2_/etc/passwd", "label": "2_/etc/passwd", "shape": "dot", "size": 10}, {"id": "[2604]/usr/sbin/apache2_2", "label": "[2604]/usr/sbin/apache2_2", "shape": "dot", "size": 10}, {"id": "2_None None", "label": "2_None None", "shape": "dot", "size": 10}, {"id": "2_:: 80", "label": "2_:: 80", "shape": "dot", "size": 10}, {"id": "2_None", "label": "2_None", "shape": "dot", "size": 10}, {"id": "2_/var/run/apache2/apache2.pid", "label": "2_/var/run/apache2/apache2.pid", "shape": "dot", "size": 10}, {"id": "2_/etc/php/7.4/apache2/conf.d/10-mysqlnd.ini", "label": "2_/etc/php/7.4/apache2/conf.d/10-mysqlnd.ini", "shape": "dot", "size": 10}, {"id": "2_/etc/php/7.4/apache2/conf.d/10-opcache.ini", "label": "2_/etc/php/7.4/apache2/conf.d/10-opcache.ini", "shape": "dot", "size": 10}, {"id": "2_/etc/php/7.4/apache2/conf.d/10-pdo.ini", "label": "2_/etc/php/7.4/apache2/conf.d/10-pdo.ini", "shape": "dot", "size": 10}, {"id": "2_/etc/php/7.4/apache2/conf.d/20-calendar.ini", "label": "2_/etc/php/7.4/apache2/conf.d/20-calendar.ini", "shape": "dot", "size": 10}, {"id": "2_/etc/php/7.4/apache2/conf.d/20-ctype.ini", "label": "2_/etc/php/7.4/apache2/conf.d/20-ctype.ini", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/opcache.so", "label": "2_/usr/lib/php/20190902/opcache.so", "shape": "dot", "size": 10}, {"id": "2_/lib/x86_64-linux-gnu/librt.so.1", "label": "2_/lib/x86_64-linux-gnu/librt.so.1", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/mysqlnd.so", "label": "2_/usr/lib/php/20190902/mysqlnd.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/pdo.so", "label": "2_/usr/lib/php/20190902/pdo.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/calendar.so", "label": "2_/usr/lib/php/20190902/calendar.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/ctype.so", "label": "2_/usr/lib/php/20190902/ctype.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/exif.so", "label": "2_/usr/lib/php/20190902/exif.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/fileinfo.so", "label": "2_/usr/lib/php/20190902/fileinfo.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/gd.so", "label": "2_/usr/lib/php/20190902/gd.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/gettext.so", "label": "2_/usr/lib/php/20190902/gettext.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/iconv.so", "label": "2_/usr/lib/php/20190902/iconv.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/json.so", "label": "2_/usr/lib/php/20190902/json.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/mysqli.so", "label": "2_/usr/lib/php/20190902/mysqli.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/pdo_mysql.so", "label": "2_/usr/lib/php/20190902/pdo_mysql.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/pdo_sqlite.so", "label": "2_/usr/lib/php/20190902/pdo_sqlite.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/phar.so", "label": "2_/usr/lib/php/20190902/phar.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/posix.so", "label": "2_/usr/lib/php/20190902/posix.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/shmop.so", "label": "2_/usr/lib/php/20190902/shmop.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/sqlite3.so", "label": "2_/usr/lib/php/20190902/sqlite3.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/php/20190902/sysvmsg.so", "label": "2_/usr/lib/php/20190902/sysvmsg.so", "shape": "dot", "size": 10}, {"id": "2_/usr/lib/ssl/openssl.cnf", "label": "2_/usr/lib/ssl/openssl.cnf", "shape": "dot", "size": 10}, {"id": "3_/proc/sys/kernel/ngroups_max", "label": "3_/proc/sys/kernel/ngroups_max", "shape": "dot", "size": 10}, {"id": "[2605]/usr/sbin/apache2_3", "label": "[2605]/usr/sbin/apache2_3", "shape": "dot", "size": 10}, {"id": "3_None None", "label": "3_None None", "shape": "dot", "size": 10}, {"id": "3_None", "label": "3_None", "shape": "dot", "size": 10}, {"id": "3_/etc/group", "label": "3_/etc/group", "shape": "dot", "size": 10}, {"id": "3_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "3_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "shape": "dot", "size": 10}, {"id": "3_/proc/sys/kernel/random/boot_id", "label": "3_/proc/sys/kernel/random/boot_id", "shape": "dot", "size": 10}, {"id": "3_::ffff:192.168.1.5 60179", "label": "3_::ffff:192.168.1.5 60179", "shape": "dot", "size": 10}, {"id": "3_/var/www/html/todo/hashgen.php", "label": "3_/var/www/html/todo/hashgen.php", "shape": "dot", "size": 10}, {"id": "3_::ffff:192.168.1.5 60228", "label": "3_::ffff:192.168.1.5 60228", "shape": "dot", "size": 10}, {"id": "3_/var/www/html/todo/logout.php", "label": "3_/var/www/html/todo/logout.php", "shape": "dot", "size": 10}, {"id": "4_/proc/sys/kernel/ngroups_max", "label": "4_/proc/sys/kernel/ngroups_max", "shape": "dot", "size": 10}, {"id": "[2607]/usr/sbin/apache2_4", "label": "[2607]/usr/sbin/apache2_4", "shape": "dot", "size": 10}, {"id": "4_None None", "label": "4_None None", "shape": "dot", "size": 10}, {"id": "4_None", "label": "4_None", "shape": "dot", "size": 10}, {"id": "4_/etc/group", "label": "4_/etc/group", "shape": "dot", "size": 10}, {"id": "4_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "4_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "shape": "dot", "size": 10}, {"id": "4_/proc/sys/kernel/random/boot_id", "label": "4_/proc/sys/kernel/random/boot_id", "shape": "dot", "size": 10}, {"id": "4_::ffff:192.168.1.5 60180", "label": "4_::ffff:192.168.1.5 60180", "shape": "dot", "size": 10}, {"id": "4_::ffff:192.168.1.5 60221", "label": "4_::ffff:192.168.1.5 60221", "shape": "dot", "size": 10}, {"id": "5_/proc/sys/kernel/ngroups_max", "label": "5_/proc/sys/kernel/ngroups_max", "shape": "dot", "size": 10}, {"id": "[2608]/usr/sbin/apache2_5", "label": "[2608]/usr/sbin/apache2_5", "shape": "dot", "size": 10}, {"id": "5_None None", "label": "5_None None", "shape": "dot", "size": 10}, {"id": "5_None", "label": "5_None", "shape": "dot", "size": 10}, {"id": "5_/etc/group", "label": "5_/etc/group", "shape": "dot", "size": 10}, {"id": "5_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "5_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "shape": "dot", "size": 10}, {"id": "5_/proc/sys/kernel/random/boot_id", "label": "5_/proc/sys/kernel/random/boot_id", "shape": "dot", "size": 10}, {"id": "5_::ffff:192.168.1.5 60181", "label": "5_::ffff:192.168.1.5 60181", "shape": "dot", "size": 10}, {"id": "5_::ffff:192.168.1.5 60229", "label": "5_::ffff:192.168.1.5 60229", "shape": "dot", "size": 10}, {"id": "6_/proc/sys/kernel/ngroups_max", "label": "6_/proc/sys/kernel/ngroups_max", "shape": "dot", "size": 10}, {"id": "[2606]/usr/sbin/apache2_6", "label": "[2606]/usr/sbin/apache2_6", "shape": "dot", "size": 10}, {"id": "6_None None", "label": "6_None None", "shape": "dot", "size": 10}, {"id": "6_None", "label": "6_None", "shape": "dot", "size": 10}, {"id": "6_/etc/group", "label": "6_/etc/group", "shape": "dot", "size": 10}, {"id": "6_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "6_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "shape": "dot", "size": 10}, {"id": "6_/proc/sys/kernel/random/boot_id", "label": "6_/proc/sys/kernel/random/boot_id", "shape": "dot", "size": 10}, {"id": "6_::ffff:192.168.1.5 60210", "label": "6_::ffff:192.168.1.5 60210", "shape": "dot", "size": 10}, {"id": "6_/var/www/html/todo/index.php", "label": "6_/var/www/html/todo/index.php", "shape": "dot", "size": 10}, {"id": "6_/var/www/html/todo/dbcon.php", "label": "6_/var/www/html/todo/dbcon.php", "shape": "dot", "size": 10}, {"id": "6_/var/www/html/todo/user_mgmt.php", "label": "6_/var/www/html/todo/user_mgmt.php", "shape": "dot", "size": 10}, {"id": "6_/var/www/html/todo/login.php", "label": "6_/var/www/html/todo/login.php", "shape": "dot", "size": 10}, {"id": "6_::ffff:192.168.1.5 60231", "label": "6_::ffff:192.168.1.5 60231", "shape": "dot", "size": 10}, {"id": "7_/proc/sys/kernel/ngroups_max", "label": "7_/proc/sys/kernel/ngroups_max", "shape": "dot", "size": 10}, {"id": "[2609]/usr/sbin/apache2_7", "label": "[2609]/usr/sbin/apache2_7", "shape": "dot", "size": 10}, {"id": "7_None None", "label": "7_None None", "shape": "dot", "size": 10}, {"id": "7_None", "label": "7_None", "shape": "dot", "size": 10}, {"id": "7_/etc/group", "label": "7_/etc/group", "shape": "dot", "size": 10}, {"id": "7_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "7_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "shape": "dot", "size": 10}, {"id": "7_/proc/sys/kernel/random/boot_id", "label": "7_/proc/sys/kernel/random/boot_id", "shape": "dot", "size": 10}, {"id": "7_::ffff:192.168.1.5 60215", "label": "7_::ffff:192.168.1.5 60215", "shape": "dot", "size": 10}, {"id": "7_/var/www/html/todo/main.php", "label": "7_/var/www/html/todo/main.php", "shape": "dot", "size": 10}, {"id": "8_/proc/sys/kernel/ngroups_max", "label": "8_/proc/sys/kernel/ngroups_max", "shape": "dot", "size": 10}, {"id": "[2611]/usr/sbin/apache2_8", "label": "[2611]/usr/sbin/apache2_8", "shape": "dot", "size": 10}, {"id": "8_None None", "label": "8_None None", "shape": "dot", "size": 10}, {"id": "8_None", "label": "8_None", "shape": "dot", "size": 10}, {"id": "8_/etc/group", "label": "8_/etc/group", "shape": "dot", "size": 10}, {"id": "8_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "8_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "shape": "dot", "size": 10}, {"id": "8_/proc/sys/kernel/random/boot_id", "label": "8_/proc/sys/kernel/random/boot_id", "shape": "dot", "size": 10}, {"id": "8_::ffff:192.168.1.5 60227", "label": "8_::ffff:192.168.1.5 60227", "shape": "dot", "size": 10}, {"id": "9_/proc/sys/kernel/ngroups_max", "label": "9_/proc/sys/kernel/ngroups_max", "shape": "dot", "size": 10}, {"id": "[2616]/usr/sbin/apache2_9", "label": "[2616]/usr/sbin/apache2_9", "shape": "dot", "size": 10}, {"id": "9_None None", "label": "9_None None", "shape": "dot", "size": 10}, {"id": "9_None", "label": "9_None", "shape": "dot", "size": 10}, {"id": "9_/etc/group", "label": "9_/etc/group", "shape": "dot", "size": 10}, {"id": "9_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "9_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "shape": "dot", "size": 10}, {"id": "9_/proc/sys/kernel/random/boot_id", "label": "9_/proc/sys/kernel/random/boot_id", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "[2603]/usr/sbin/apache2_1", "label": "execve", "to": "1_/lib64/ld-linux-x86-64.so.2", "weight": 1}, {"arrows": "to", "from": "[2603]/usr/sbin/apache2_1", "label": "connect", "to": "1_None None", "weight": 1}, {"arrows": "to", "from": "[2603]/usr/sbin/apache2_1", "label": "connect", "to": "1_:: 0", "weight": 1}, {"arrows": "to", "from": "[2603]/usr/sbin/apache2_1", "label": "bind", "to": "1_:: 80", "weight": 1}, {"arrows": "to", "from": "[2603]/usr/sbin/apache2_1", "label": "connect", "to": "1_0.0.0.0 80", "weight": 1}, {"arrows": "to", "from": "[2603]/usr/sbin/apache2_1", "label": "write", "to": "1_None", "weight": 1}, {"arrows": "to", "from": "[2603]/usr/sbin/apache2_1", "label": "connect", "to": "1_0.0.0.0 0", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libpcre.so.3", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libaprutil-1.so.0", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libapr-1.so.0", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libpthread.so.0", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libc.so.6", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libcrypt.so.1", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libexpat.so.1", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libuuid.so.1", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/lib/x86_64-linux-gnu/libdl.so.2", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/dev/urandom", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_None", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/gai.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/apache2.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/access_compat.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/auth_basic.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/usr/lib/apache2/modules/mod_access_compat.so", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/authz_host.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/filter.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/mime.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/reqtimeout.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/usr/lib/apache2/modules/mod_reqtimeout.so", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/setenvif.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/usr/lib/apache2/modules/mod_setenvif.so", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/status.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/usr/lib/apache2/modules/mod_status.so", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/alias.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/autoindex.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/deflate.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/dir.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/mime.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/mpm_prefork.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/negotiation.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/php7.4.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/reqtimeout.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/setenvif.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/status.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/ports.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/conf-enabled/apache2-doc.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/conf-enabled/charset.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/conf-enabled/localized-error-pages.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/conf-enabled/other-vhosts-access-log.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/conf-enabled/security.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/conf-enabled/serve-cgi-bin.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/sites-enabled/000-default.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/nsswitch.conf", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/passwd", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/mpm_prefork.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/mods-enabled/negotiation.load", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "1_/etc/apache2/conf-enabled", "label": "read", "to": "[2603]/usr/sbin/apache2_1", "weight": 1}, {"arrows": "to", "from": "2_/etc/passwd", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "[2604]/usr/sbin/apache2_2", "label": "connect", "to": "2_None None", "weight": 1}, {"arrows": "to", "from": "[2604]/usr/sbin/apache2_2", "label": "connect", "to": "2_:: 80", "weight": 1}, {"arrows": "to", "from": "[2604]/usr/sbin/apache2_2", "label": "write", "to": "2_None", "weight": 1}, {"arrows": "to", "from": "[2604]/usr/sbin/apache2_2", "label": "write", "to": "2_/var/run/apache2/apache2.pid", "weight": 1}, {"arrows": "to", "from": "2_None", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/etc/php/7.4/apache2/conf.d/10-mysqlnd.ini", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/etc/php/7.4/apache2/conf.d/10-opcache.ini", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/etc/php/7.4/apache2/conf.d/10-pdo.ini", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/etc/php/7.4/apache2/conf.d/20-calendar.ini", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/etc/php/7.4/apache2/conf.d/20-ctype.ini", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/opcache.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/lib/x86_64-linux-gnu/librt.so.1", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/mysqlnd.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/pdo.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/calendar.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/ctype.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/exif.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/fileinfo.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/gd.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/gettext.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/iconv.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/json.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/mysqli.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/pdo_mysql.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/pdo_sqlite.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/phar.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/posix.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/shmop.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/sqlite3.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/php/20190902/sysvmsg.so", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "2_/usr/lib/ssl/openssl.cnf", "label": "read", "to": "[2604]/usr/sbin/apache2_2", "weight": 1}, {"arrows": "to", "from": "3_/proc/sys/kernel/ngroups_max", "label": "read", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "[2605]/usr/sbin/apache2_3", "label": "connect", "to": "3_None None", "weight": 1}, {"arrows": "to", "from": "[2605]/usr/sbin/apache2_3", "label": "write", "to": "3_None", "weight": 1}, {"arrows": "to", "from": "3_/etc/group", "label": "read", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "3_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "read", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "3_/proc/sys/kernel/random/boot_id", "label": "read", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "3_None", "label": "read", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "3_::ffff:192.168.1.5 60179", "label": "accept4", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "3_/var/www/html/todo/hashgen.php", "label": "read", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "3_::ffff:192.168.1.5 60228", "label": "accept4", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "3_/var/www/html/todo/logout.php", "label": "read", "to": "[2605]/usr/sbin/apache2_3", "weight": 1}, {"arrows": "to", "from": "4_/proc/sys/kernel/ngroups_max", "label": "read", "to": "[2607]/usr/sbin/apache2_4", "weight": 1}, {"arrows": "to", "from": "[2607]/usr/sbin/apache2_4", "label": "connect", "to": "4_None None", "weight": 1}, {"arrows": "to", "from": "[2607]/usr/sbin/apache2_4", "label": "write", "to": "4_None", "weight": 1}, {"arrows": "to", "from": "4_/etc/group", "label": "read", "to": "[2607]/usr/sbin/apache2_4", "weight": 1}, {"arrows": "to", "from": "4_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "read", "to": "[2607]/usr/sbin/apache2_4", "weight": 1}, {"arrows": "to", "from": "4_/proc/sys/kernel/random/boot_id", "label": "read", "to": "[2607]/usr/sbin/apache2_4", "weight": 1}, {"arrows": "to", "from": "4_None", "label": "read", "to": "[2607]/usr/sbin/apache2_4", "weight": 1}, {"arrows": "to", "from": "4_::ffff:192.168.1.5 60180", "label": "accept4", "to": "[2607]/usr/sbin/apache2_4", "weight": 1}, {"arrows": "to", "from": "4_::ffff:192.168.1.5 60221", "label": "accept4", "to": "[2607]/usr/sbin/apache2_4", "weight": 1}, {"arrows": "to", "from": "5_/proc/sys/kernel/ngroups_max", "label": "read", "to": "[2608]/usr/sbin/apache2_5", "weight": 1}, {"arrows": "to", "from": "[2608]/usr/sbin/apache2_5", "label": "connect", "to": "5_None None", "weight": 1}, {"arrows": "to", "from": "[2608]/usr/sbin/apache2_5", "label": "write", "to": "5_None", "weight": 1}, {"arrows": "to", "from": "5_/etc/group", "label": "read", "to": "[2608]/usr/sbin/apache2_5", "weight": 1}, {"arrows": "to", "from": "5_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "read", "to": "[2608]/usr/sbin/apache2_5", "weight": 1}, {"arrows": "to", "from": "5_/proc/sys/kernel/random/boot_id", "label": "read", "to": "[2608]/usr/sbin/apache2_5", "weight": 1}, {"arrows": "to", "from": "5_None", "label": "read", "to": "[2608]/usr/sbin/apache2_5", "weight": 1}, {"arrows": "to", "from": "5_::ffff:192.168.1.5 60181", "label": "accept4", "to": "[2608]/usr/sbin/apache2_5", "weight": 1}, {"arrows": "to", "from": "5_::ffff:192.168.1.5 60229", "label": "accept4", "to": "[2608]/usr/sbin/apache2_5", "weight": 1}, {"arrows": "to", "from": "6_/proc/sys/kernel/ngroups_max", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "[2606]/usr/sbin/apache2_6", "label": "connect", "to": "6_None None", "weight": 1}, {"arrows": "to", "from": "[2606]/usr/sbin/apache2_6", "label": "write", "to": "6_None", "weight": 1}, {"arrows": "to", "from": "6_/etc/group", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_/proc/sys/kernel/random/boot_id", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_None", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_::ffff:192.168.1.5 60210", "label": "accept4", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_/var/www/html/todo/index.php", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_/var/www/html/todo/dbcon.php", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_/var/www/html/todo/user_mgmt.php", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_/var/www/html/todo/login.php", "label": "read", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "6_::ffff:192.168.1.5 60231", "label": "accept4", "to": "[2606]/usr/sbin/apache2_6", "weight": 1}, {"arrows": "to", "from": "7_/proc/sys/kernel/ngroups_max", "label": "read", "to": "[2609]/usr/sbin/apache2_7", "weight": 1}, {"arrows": "to", "from": "[2609]/usr/sbin/apache2_7", "label": "connect", "to": "7_None None", "weight": 1}, {"arrows": "to", "from": "[2609]/usr/sbin/apache2_7", "label": "write", "to": "7_None", "weight": 1}, {"arrows": "to", "from": "7_/etc/group", "label": "read", "to": "[2609]/usr/sbin/apache2_7", "weight": 1}, {"arrows": "to", "from": "7_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "read", "to": "[2609]/usr/sbin/apache2_7", "weight": 1}, {"arrows": "to", "from": "7_/proc/sys/kernel/random/boot_id", "label": "read", "to": "[2609]/usr/sbin/apache2_7", "weight": 1}, {"arrows": "to", "from": "7_None", "label": "read", "to": "[2609]/usr/sbin/apache2_7", "weight": 1}, {"arrows": "to", "from": "7_::ffff:192.168.1.5 60215", "label": "accept4", "to": "[2609]/usr/sbin/apache2_7", "weight": 1}, {"arrows": "to", "from": "7_/var/www/html/todo/main.php", "label": "read", "to": "[2609]/usr/sbin/apache2_7", "weight": 1}, {"arrows": "to", "from": "8_/proc/sys/kernel/ngroups_max", "label": "read", "to": "[2611]/usr/sbin/apache2_8", "weight": 1}, {"arrows": "to", "from": "[2611]/usr/sbin/apache2_8", "label": "connect", "to": "8_None None", "weight": 1}, {"arrows": "to", "from": "[2611]/usr/sbin/apache2_8", "label": "write", "to": "8_None", "weight": 1}, {"arrows": "to", "from": "8_/etc/group", "label": "read", "to": "[2611]/usr/sbin/apache2_8", "weight": 1}, {"arrows": "to", "from": "8_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "read", "to": "[2611]/usr/sbin/apache2_8", "weight": 1}, {"arrows": "to", "from": "8_/proc/sys/kernel/random/boot_id", "label": "read", "to": "[2611]/usr/sbin/apache2_8", "weight": 1}, {"arrows": "to", "from": "8_None", "label": "read", "to": "[2611]/usr/sbin/apache2_8", "weight": 1}, {"arrows": "to", "from": "8_::ffff:192.168.1.5 60227", "label": "accept4", "to": "[2611]/usr/sbin/apache2_8", "weight": 1}, {"arrows": "to", "from": "9_/proc/sys/kernel/ngroups_max", "label": "read", "to": "[2616]/usr/sbin/apache2_9", "weight": 1}, {"arrows": "to", "from": "[2616]/usr/sbin/apache2_9", "label": "connect", "to": "9_None None", "weight": 1}, {"arrows": "to", "from": "[2616]/usr/sbin/apache2_9", "label": "write", "to": "9_None", "weight": 1}, {"arrows": "to", "from": "9_/etc/group", "label": "read", "to": "[2616]/usr/sbin/apache2_9", "weight": 1}, {"arrows": "to", "from": "9_/lib/x86_64-linux-gnu/libnss_systemd.so.2", "label": "read", "to": "[2616]/usr/sbin/apache2_9", "weight": 1}, {"arrows": "to", "from": "9_/proc/sys/kernel/random/boot_id", "label": "read", "to": "[2616]/usr/sbin/apache2_9", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0,
+            "damping": 0.09,
+            "nodeDistance": 100,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+        network.on("stabilizationProgress", function(params) {
+      		document.getElementById('loadingBar').removeAttribute("style");
+	        var maxWidth = 496;
+	        var minWidth = 20;
+	        var widthFactor = params.iterations/params.total;
+	        var width = Math.max(minWidth,maxWidth * widthFactor);
+
+	        document.getElementById('bar').style.width = width + 'px';
+	        document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+	    });
+	    network.once("stabilizationIterationsDone", function() {
+	        document.getElementById('text').innerHTML = '100%';
+	        document.getElementById('bar').style.width = '496px';
+	        document.getElementById('loadingBar').style.opacity = 0;
+	        // really clean the dom element
+	        setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+	    });
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

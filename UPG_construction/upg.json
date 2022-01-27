@@ -1,0 +1,1236 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "id": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "id": "1_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libpcre.so.3"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libaprutil-1.so.0"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libapr-1.so.0"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libpthread.so.0"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libc.so.6"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libcrypt.so.1"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libexpat.so.1"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libuuid.so.1"
+        },
+        {
+            "id": "1_/lib/x86_64-linux-gnu/libdl.so.2"
+        },
+        {
+            "id": "1_/dev/urandom"
+        },
+        {
+            "id": "1_None"
+        },
+        {
+            "id": "1_None None"
+        },
+        {
+            "id": "1_/etc/gai.conf"
+        },
+        {
+            "id": "1_:: 0"
+        },
+        {
+            "id": "1_/etc/apache2/apache2.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/access_compat.load"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/auth_basic.load"
+        },
+        {
+            "id": "1_/usr/lib/apache2/modules/mod_access_compat.so"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/authz_host.load"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/filter.load"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/mime.load"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/reqtimeout.load"
+        },
+        {
+            "id": "1_/usr/lib/apache2/modules/mod_reqtimeout.so"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/setenvif.load"
+        },
+        {
+            "id": "1_/usr/lib/apache2/modules/mod_setenvif.so"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/status.load"
+        },
+        {
+            "id": "1_/usr/lib/apache2/modules/mod_status.so"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/alias.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/autoindex.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/deflate.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/dir.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/mime.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/mpm_prefork.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/negotiation.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/php7.4.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/reqtimeout.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/setenvif.conf"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/status.conf"
+        },
+        {
+            "id": "1_/etc/apache2/ports.conf"
+        },
+        {
+            "id": "1_/etc/apache2/conf-enabled/apache2-doc.conf"
+        },
+        {
+            "id": "1_/etc/apache2/conf-enabled/charset.conf"
+        },
+        {
+            "id": "1_/etc/apache2/conf-enabled/localized-error-pages.conf"
+        },
+        {
+            "id": "1_/etc/apache2/conf-enabled/other-vhosts-access-log.conf"
+        },
+        {
+            "id": "1_/etc/apache2/conf-enabled/security.conf"
+        },
+        {
+            "id": "1_/etc/apache2/conf-enabled/serve-cgi-bin.conf"
+        },
+        {
+            "id": "1_/etc/apache2/sites-enabled/000-default.conf"
+        },
+        {
+            "id": "1_/etc/nsswitch.conf"
+        },
+        {
+            "id": "1_/etc/passwd"
+        },
+        {
+            "id": "1_:: 80"
+        },
+        {
+            "id": "1_0.0.0.0 80"
+        },
+        {
+            "id": "1_0.0.0.0 0"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/mpm_prefork.load"
+        },
+        {
+            "id": "1_/etc/apache2/mods-enabled/negotiation.load"
+        },
+        {
+            "id": "1_/etc/apache2/conf-enabled"
+        },
+        {
+            "id": "2_/etc/passwd"
+        },
+        {
+            "id": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "id": "2_None None"
+        },
+        {
+            "id": "2_:: 80"
+        },
+        {
+            "id": "2_None"
+        },
+        {
+            "id": "2_/etc/php/7.4/apache2/conf.d/10-mysqlnd.ini"
+        },
+        {
+            "id": "2_/etc/php/7.4/apache2/conf.d/10-opcache.ini"
+        },
+        {
+            "id": "2_/etc/php/7.4/apache2/conf.d/10-pdo.ini"
+        },
+        {
+            "id": "2_/etc/php/7.4/apache2/conf.d/20-calendar.ini"
+        },
+        {
+            "id": "2_/etc/php/7.4/apache2/conf.d/20-ctype.ini"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/opcache.so"
+        },
+        {
+            "id": "2_/lib/x86_64-linux-gnu/librt.so.1"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/mysqlnd.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/pdo.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/calendar.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/ctype.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/exif.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/fileinfo.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/gd.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/gettext.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/iconv.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/json.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/mysqli.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/pdo_mysql.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/pdo_sqlite.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/phar.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/posix.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/shmop.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/sqlite3.so"
+        },
+        {
+            "id": "2_/usr/lib/php/20190902/sysvmsg.so"
+        },
+        {
+            "id": "2_/usr/lib/ssl/openssl.cnf"
+        },
+        {
+            "id": "2_/var/run/apache2/apache2.pid"
+        },
+        {
+            "id": "3_/proc/sys/kernel/ngroups_max"
+        },
+        {
+            "id": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "id": "3_/etc/group"
+        },
+        {
+            "id": "3_/lib/x86_64-linux-gnu/libnss_systemd.so.2"
+        },
+        {
+            "id": "3_None None"
+        },
+        {
+            "id": "3_/proc/sys/kernel/random/boot_id"
+        },
+        {
+            "id": "3_None"
+        },
+        {
+            "id": "3_::ffff:192.168.1.5 60179"
+        },
+        {
+            "id": "3_/var/www/html/todo/hashgen.php"
+        },
+        {
+            "id": "3_::ffff:192.168.1.5 60228"
+        },
+        {
+            "id": "3_/var/www/html/todo/logout.php"
+        },
+        {
+            "id": "4_/proc/sys/kernel/ngroups_max"
+        },
+        {
+            "id": "[2607]/usr/sbin/apache2_4"
+        },
+        {
+            "id": "4_/etc/group"
+        },
+        {
+            "id": "4_/lib/x86_64-linux-gnu/libnss_systemd.so.2"
+        },
+        {
+            "id": "4_None None"
+        },
+        {
+            "id": "4_/proc/sys/kernel/random/boot_id"
+        },
+        {
+            "id": "4_None"
+        },
+        {
+            "id": "4_::ffff:192.168.1.5 60180"
+        },
+        {
+            "id": "4_::ffff:192.168.1.5 60221"
+        },
+        {
+            "id": "5_/proc/sys/kernel/ngroups_max"
+        },
+        {
+            "id": "[2608]/usr/sbin/apache2_5"
+        },
+        {
+            "id": "5_/etc/group"
+        },
+        {
+            "id": "5_/lib/x86_64-linux-gnu/libnss_systemd.so.2"
+        },
+        {
+            "id": "5_None None"
+        },
+        {
+            "id": "5_/proc/sys/kernel/random/boot_id"
+        },
+        {
+            "id": "5_None"
+        },
+        {
+            "id": "5_::ffff:192.168.1.5 60181"
+        },
+        {
+            "id": "5_::ffff:192.168.1.5 60229"
+        },
+        {
+            "id": "6_/proc/sys/kernel/ngroups_max"
+        },
+        {
+            "id": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "id": "6_/etc/group"
+        },
+        {
+            "id": "6_/lib/x86_64-linux-gnu/libnss_systemd.so.2"
+        },
+        {
+            "id": "6_None None"
+        },
+        {
+            "id": "6_/proc/sys/kernel/random/boot_id"
+        },
+        {
+            "id": "6_None"
+        },
+        {
+            "id": "6_::ffff:192.168.1.5 60210"
+        },
+        {
+            "id": "6_/var/www/html/todo/index.php"
+        },
+        {
+            "id": "6_/var/www/html/todo/dbcon.php"
+        },
+        {
+            "id": "6_/var/www/html/todo/user_mgmt.php"
+        },
+        {
+            "id": "6_/var/www/html/todo/login.php"
+        },
+        {
+            "id": "6_::ffff:192.168.1.5 60231"
+        },
+        {
+            "id": "7_/proc/sys/kernel/ngroups_max"
+        },
+        {
+            "id": "[2609]/usr/sbin/apache2_7"
+        },
+        {
+            "id": "7_/etc/group"
+        },
+        {
+            "id": "7_/lib/x86_64-linux-gnu/libnss_systemd.so.2"
+        },
+        {
+            "id": "7_None None"
+        },
+        {
+            "id": "7_/proc/sys/kernel/random/boot_id"
+        },
+        {
+            "id": "7_None"
+        },
+        {
+            "id": "7_::ffff:192.168.1.5 60215"
+        },
+        {
+            "id": "7_/var/www/html/todo/main.php"
+        },
+        {
+            "id": "8_/proc/sys/kernel/ngroups_max"
+        },
+        {
+            "id": "[2611]/usr/sbin/apache2_8"
+        },
+        {
+            "id": "8_/etc/group"
+        },
+        {
+            "id": "8_/lib/x86_64-linux-gnu/libnss_systemd.so.2"
+        },
+        {
+            "id": "8_None None"
+        },
+        {
+            "id": "8_/proc/sys/kernel/random/boot_id"
+        },
+        {
+            "id": "8_None"
+        },
+        {
+            "id": "8_::ffff:192.168.1.5 60227"
+        },
+        {
+            "id": "9_/proc/sys/kernel/ngroups_max"
+        },
+        {
+            "id": "[2616]/usr/sbin/apache2_9"
+        },
+        {
+            "id": "9_/etc/group"
+        },
+        {
+            "id": "9_/lib/x86_64-linux-gnu/libnss_systemd.so.2"
+        },
+        {
+            "id": "9_None None"
+        },
+        {
+            "id": "9_/proc/sys/kernel/random/boot_id"
+        },
+        {
+            "id": "9_None"
+        }
+    ],
+    "links": [
+        {
+            "label": "execve",
+            "source": "[2603]/usr/sbin/apache2_1",
+            "target": "1_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "connect",
+            "source": "[2603]/usr/sbin/apache2_1",
+            "target": "1_None None"
+        },
+        {
+            "label": "connect",
+            "source": "[2603]/usr/sbin/apache2_1",
+            "target": "1_:: 0"
+        },
+        {
+            "label": "bind",
+            "source": "[2603]/usr/sbin/apache2_1",
+            "target": "1_:: 80"
+        },
+        {
+            "label": "connect",
+            "source": "[2603]/usr/sbin/apache2_1",
+            "target": "1_0.0.0.0 80"
+        },
+        {
+            "label": "write",
+            "source": "[2603]/usr/sbin/apache2_1",
+            "target": "1_None"
+        },
+        {
+            "label": "connect",
+            "source": "[2603]/usr/sbin/apache2_1",
+            "target": "1_0.0.0.0 0"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libpcre.so.3",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libaprutil-1.so.0",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libapr-1.so.0",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libpthread.so.0",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libc.so.6",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libcrypt.so.1",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libexpat.so.1",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libuuid.so.1",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/lib/x86_64-linux-gnu/libdl.so.2",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/dev/urandom",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_None",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/gai.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/apache2.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/access_compat.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/auth_basic.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/usr/lib/apache2/modules/mod_access_compat.so",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/authz_host.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/filter.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/mime.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/reqtimeout.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/usr/lib/apache2/modules/mod_reqtimeout.so",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/setenvif.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/usr/lib/apache2/modules/mod_setenvif.so",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/status.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/usr/lib/apache2/modules/mod_status.so",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/alias.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/autoindex.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/deflate.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/dir.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/mime.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/mpm_prefork.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/negotiation.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/php7.4.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/reqtimeout.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/setenvif.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/status.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/ports.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/conf-enabled/apache2-doc.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/conf-enabled/charset.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/conf-enabled/localized-error-pages.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/conf-enabled/other-vhosts-access-log.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/conf-enabled/security.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/conf-enabled/serve-cgi-bin.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/sites-enabled/000-default.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/nsswitch.conf",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/passwd",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/mpm_prefork.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/mods-enabled/negotiation.load",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "1_/etc/apache2/conf-enabled",
+            "target": "[2603]/usr/sbin/apache2_1"
+        },
+        {
+            "label": "read",
+            "source": "2_/etc/passwd",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "connect",
+            "source": "[2604]/usr/sbin/apache2_2",
+            "target": "2_None None"
+        },
+        {
+            "label": "connect",
+            "source": "[2604]/usr/sbin/apache2_2",
+            "target": "2_:: 80"
+        },
+        {
+            "label": "write",
+            "source": "[2604]/usr/sbin/apache2_2",
+            "target": "2_None"
+        },
+        {
+            "label": "write",
+            "source": "[2604]/usr/sbin/apache2_2",
+            "target": "2_/var/run/apache2/apache2.pid"
+        },
+        {
+            "label": "read",
+            "source": "2_None",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/etc/php/7.4/apache2/conf.d/10-mysqlnd.ini",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/etc/php/7.4/apache2/conf.d/10-opcache.ini",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/etc/php/7.4/apache2/conf.d/10-pdo.ini",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/etc/php/7.4/apache2/conf.d/20-calendar.ini",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/etc/php/7.4/apache2/conf.d/20-ctype.ini",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/opcache.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/lib/x86_64-linux-gnu/librt.so.1",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/mysqlnd.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/pdo.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/calendar.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/ctype.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/exif.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/fileinfo.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/gd.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/gettext.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/iconv.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/json.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/mysqli.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/pdo_mysql.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/pdo_sqlite.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/phar.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/posix.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/shmop.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/sqlite3.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/php/20190902/sysvmsg.so",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "2_/usr/lib/ssl/openssl.cnf",
+            "target": "[2604]/usr/sbin/apache2_2"
+        },
+        {
+            "label": "read",
+            "source": "3_/proc/sys/kernel/ngroups_max",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "connect",
+            "source": "[2605]/usr/sbin/apache2_3",
+            "target": "3_None None"
+        },
+        {
+            "label": "write",
+            "source": "[2605]/usr/sbin/apache2_3",
+            "target": "3_None"
+        },
+        {
+            "label": "read",
+            "source": "3_/etc/group",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "read",
+            "source": "3_/lib/x86_64-linux-gnu/libnss_systemd.so.2",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "read",
+            "source": "3_/proc/sys/kernel/random/boot_id",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "read",
+            "source": "3_None",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "accept4",
+            "source": "3_::ffff:192.168.1.5 60179",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "read",
+            "source": "3_/var/www/html/todo/hashgen.php",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "accept4",
+            "source": "3_::ffff:192.168.1.5 60228",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "read",
+            "source": "3_/var/www/html/todo/logout.php",
+            "target": "[2605]/usr/sbin/apache2_3"
+        },
+        {
+            "label": "read",
+            "source": "4_/proc/sys/kernel/ngroups_max",
+            "target": "[2607]/usr/sbin/apache2_4"
+        },
+        {
+            "label": "connect",
+            "source": "[2607]/usr/sbin/apache2_4",
+            "target": "4_None None"
+        },
+        {
+            "label": "write",
+            "source": "[2607]/usr/sbin/apache2_4",
+            "target": "4_None"
+        },
+        {
+            "label": "read",
+            "source": "4_/etc/group",
+            "target": "[2607]/usr/sbin/apache2_4"
+        },
+        {
+            "label": "read",
+            "source": "4_/lib/x86_64-linux-gnu/libnss_systemd.so.2",
+            "target": "[2607]/usr/sbin/apache2_4"
+        },
+        {
+            "label": "read",
+            "source": "4_/proc/sys/kernel/random/boot_id",
+            "target": "[2607]/usr/sbin/apache2_4"
+        },
+        {
+            "label": "read",
+            "source": "4_None",
+            "target": "[2607]/usr/sbin/apache2_4"
+        },
+        {
+            "label": "accept4",
+            "source": "4_::ffff:192.168.1.5 60180",
+            "target": "[2607]/usr/sbin/apache2_4"
+        },
+        {
+            "label": "accept4",
+            "source": "4_::ffff:192.168.1.5 60221",
+            "target": "[2607]/usr/sbin/apache2_4"
+        },
+        {
+            "label": "read",
+            "source": "5_/proc/sys/kernel/ngroups_max",
+            "target": "[2608]/usr/sbin/apache2_5"
+        },
+        {
+            "label": "connect",
+            "source": "[2608]/usr/sbin/apache2_5",
+            "target": "5_None None"
+        },
+        {
+            "label": "write",
+            "source": "[2608]/usr/sbin/apache2_5",
+            "target": "5_None"
+        },
+        {
+            "label": "read",
+            "source": "5_/etc/group",
+            "target": "[2608]/usr/sbin/apache2_5"
+        },
+        {
+            "label": "read",
+            "source": "5_/lib/x86_64-linux-gnu/libnss_systemd.so.2",
+            "target": "[2608]/usr/sbin/apache2_5"
+        },
+        {
+            "label": "read",
+            "source": "5_/proc/sys/kernel/random/boot_id",
+            "target": "[2608]/usr/sbin/apache2_5"
+        },
+        {
+            "label": "read",
+            "source": "5_None",
+            "target": "[2608]/usr/sbin/apache2_5"
+        },
+        {
+            "label": "accept4",
+            "source": "5_::ffff:192.168.1.5 60181",
+            "target": "[2608]/usr/sbin/apache2_5"
+        },
+        {
+            "label": "accept4",
+            "source": "5_::ffff:192.168.1.5 60229",
+            "target": "[2608]/usr/sbin/apache2_5"
+        },
+        {
+            "label": "read",
+            "source": "6_/proc/sys/kernel/ngroups_max",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "connect",
+            "source": "[2606]/usr/sbin/apache2_6",
+            "target": "6_None None"
+        },
+        {
+            "label": "write",
+            "source": "[2606]/usr/sbin/apache2_6",
+            "target": "6_None"
+        },
+        {
+            "label": "read",
+            "source": "6_/etc/group",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "read",
+            "source": "6_/lib/x86_64-linux-gnu/libnss_systemd.so.2",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "read",
+            "source": "6_/proc/sys/kernel/random/boot_id",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "read",
+            "source": "6_None",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "accept4",
+            "source": "6_::ffff:192.168.1.5 60210",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "read",
+            "source": "6_/var/www/html/todo/index.php",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "read",
+            "source": "6_/var/www/html/todo/dbcon.php",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "read",
+            "source": "6_/var/www/html/todo/user_mgmt.php",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "read",
+            "source": "6_/var/www/html/todo/login.php",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "accept4",
+            "source": "6_::ffff:192.168.1.5 60231",
+            "target": "[2606]/usr/sbin/apache2_6"
+        },
+        {
+            "label": "read",
+            "source": "7_/proc/sys/kernel/ngroups_max",
+            "target": "[2609]/usr/sbin/apache2_7"
+        },
+        {
+            "label": "connect",
+            "source": "[2609]/usr/sbin/apache2_7",
+            "target": "7_None None"
+        },
+        {
+            "label": "write",
+            "source": "[2609]/usr/sbin/apache2_7",
+            "target": "7_None"
+        },
+        {
+            "label": "read",
+            "source": "7_/etc/group",
+            "target": "[2609]/usr/sbin/apache2_7"
+        },
+        {
+            "label": "read",
+            "source": "7_/lib/x86_64-linux-gnu/libnss_systemd.so.2",
+            "target": "[2609]/usr/sbin/apache2_7"
+        },
+        {
+            "label": "read",
+            "source": "7_/proc/sys/kernel/random/boot_id",
+            "target": "[2609]/usr/sbin/apache2_7"
+        },
+        {
+            "label": "read",
+            "source": "7_None",
+            "target": "[2609]/usr/sbin/apache2_7"
+        },
+        {
+            "label": "accept4",
+            "source": "7_::ffff:192.168.1.5 60215",
+            "target": "[2609]/usr/sbin/apache2_7"
+        },
+        {
+            "label": "read",
+            "source": "7_/var/www/html/todo/main.php",
+            "target": "[2609]/usr/sbin/apache2_7"
+        },
+        {
+            "label": "read",
+            "source": "8_/proc/sys/kernel/ngroups_max",
+            "target": "[2611]/usr/sbin/apache2_8"
+        },
+        {
+            "label": "connect",
+            "source": "[2611]/usr/sbin/apache2_8",
+            "target": "8_None None"
+        },
+        {
+            "label": "write",
+            "source": "[2611]/usr/sbin/apache2_8",
+            "target": "8_None"
+        },
+        {
+            "label": "read",
+            "source": "8_/etc/group",
+            "target": "[2611]/usr/sbin/apache2_8"
+        },
+        {
+            "label": "read",
+            "source": "8_/lib/x86_64-linux-gnu/libnss_systemd.so.2",
+            "target": "[2611]/usr/sbin/apache2_8"
+        },
+        {
+            "label": "read",
+            "source": "8_/proc/sys/kernel/random/boot_id",
+            "target": "[2611]/usr/sbin/apache2_8"
+        },
+        {
+            "label": "read",
+            "source": "8_None",
+            "target": "[2611]/usr/sbin/apache2_8"
+        },
+        {
+            "label": "accept4",
+            "source": "8_::ffff:192.168.1.5 60227",
+            "target": "[2611]/usr/sbin/apache2_8"
+        },
+        {
+            "label": "read",
+            "source": "9_/proc/sys/kernel/ngroups_max",
+            "target": "[2616]/usr/sbin/apache2_9"
+        },
+        {
+            "label": "connect",
+            "source": "[2616]/usr/sbin/apache2_9",
+            "target": "9_None None"
+        },
+        {
+            "label": "write",
+            "source": "[2616]/usr/sbin/apache2_9",
+            "target": "9_None"
+        },
+        {
+            "label": "read",
+            "source": "9_/etc/group",
+            "target": "[2616]/usr/sbin/apache2_9"
+        },
+        {
+            "label": "read",
+            "source": "9_/lib/x86_64-linux-gnu/libnss_systemd.so.2",
+            "target": "[2616]/usr/sbin/apache2_9"
+        },
+        {
+            "label": "read",
+            "source": "9_/proc/sys/kernel/random/boot_id",
+            "target": "[2616]/usr/sbin/apache2_9"
+        }
+    ]
+}
