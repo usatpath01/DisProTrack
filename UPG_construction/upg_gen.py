@@ -11,14 +11,14 @@ from pyvis.network import Network
 syscall_cnt = {}
 
 def load_graph(): #Function to load the graph from json file
-	f = open("output/graph.json",)
+	f = open("../static_analysis/graph.json",)
 	data = json.load(f)
 	G = json_graph.node_link_graph(data)
 	# print(type(G))
 	return G
 
 def load_log(): #Function to load the log file from json file
-	f = open("output/universal_log.json",)
+	f = open("../ULF_generation/universal_log.json",)
 	# f = open("uvl.json",)
 	data = json.load(f)
 

@@ -1,7 +1,7 @@
 #=============================================================
-#   Title : SubGraph Generation
-#   Author : Abhyanand Sharma
-#   Date : 27th Jan, 2022
+#  Title : SubGraph Generation
+#  Author : Abhyanand Sharma
+#  Date : 27th Jan, 2022
 #=============================================================
 #  ==================  USAGE  ================================
 #  python3 final_forward_tracing.py -B <symptom node>
@@ -24,7 +24,6 @@ labels = nx.get_edge_attributes(H,'label')                                      
 SG = nx.DiGraph()                                                                       #instance of subgraph 
 edge_labels = {}  
 
-
 #View the original UPG
 def viewgraph():
     pos = nx.spring_layout(H)
@@ -33,7 +32,6 @@ def viewgraph():
     nx.draw_networkx_labels(H,pos)
     nx.draw_networkx_edge_labels(H,pos,edge_labels=labels)
     plt.show()
-
 
 # Backward Tracing algorithm
 def backward_tracing(child_node):                                                               
@@ -52,7 +50,6 @@ def backward_tracing(child_node):
                     stack.put(i[0])
                     visited.append(i[0])
     print(parent_nodes)
-
 
 
 # BFS forward tracing algorithm and subgraph generation                                                                       
@@ -87,10 +84,15 @@ def main():
     parser.add_argument('-S','--subg',help='Specify cause')
     parser.add_argument('-G','--viewg',help='View UPG')
     args = parser.parse_args()
-    if args.back :
-        backward_tracing(args.back)
-    if args.subg:
-        subgraph_gen(args.subg)
+    with open("./UPG_construction/aud_map.json") as json_file:
+        data = json.load(json_file)
+    if args.back in data:
+        name = data[args.back]
+        backward_tracing(name)
+            
+    if args.subg in data:
+        name1 = data[args.subg]
+        subgraph_gen(name1)
     if args.viewg == 'y':
         viewgraph()
     
