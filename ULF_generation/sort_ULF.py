@@ -12,7 +12,7 @@ def parse_date(datestr):
     #return parser.parse(datestr)
 
 
-with open('data1.json', 'r') as file:
+with open('outputs\data1.json', 'r') as file:
     datastr = file.read()
 #print(type(datastr))
 #print(datastr)
@@ -34,7 +34,7 @@ except TypeError:
     print(D3.get("lms"))
     pass
 # pprint.pprint(newlist)
-with open('universal_log.json', 'a') as f:
+with open(r"outputs\universal_log.json", 'a') as f:
     f.truncate()
     json.dump(newlist, f, indent=2)  
 

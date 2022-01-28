@@ -101,7 +101,7 @@ def parse_audit_log(fname):
 
 
         print(j)
-        with open('data.json', 'a') as f:
+        with open('outputs\data.json', 'a') as f:
             json.dump(j, f, indent=2)
         
         
@@ -149,7 +149,7 @@ def parse_acess_log(fname):
 
         
         print(j)
-        with open('data.json', 'a') as f:
+        with open('outputs\data.json', 'a') as f:
             json.dump(j, f, indent=2)             
         
         #the_datetime = datetime.datetime.fromtimestamp( epoch_time )  
@@ -196,7 +196,7 @@ def parse_error_log(fname):
         
         
             print(j)
-            with open('data.json', 'a') as f:
+            with open('outputs\data.json', 'a') as f:
                 json.dump(j, f, indent=2)             
         except:
             pass
@@ -220,7 +220,9 @@ if __name__ == '__main__':
     #    print("Please provide the log file in the cmdline")
 
     # Parding teh audit log
-    parse_audit_log("audit_164m.json")
+    #parse_audit_log("audit_164m.json")
+    parse_audit_log("outputs\output_merged.txt")
+
 
     # #print("ACCESS LOG--->")
     # parse_acess_log("../logs/apache/rst1996/home/augumentedLogs/access.log")
@@ -242,8 +244,8 @@ if __name__ == '__main__':
     # print('\n\n************MySQL query log parsed\n\n')
 
     
-    fin = open("data.json", "rt")
-    fout = open("data1.json", "wt")
+    fin = open("outputs\data.json", "rt")
+    fout = open("outputs\data1.json", "wt")
     
     for line in fin:
         	fout.write(line.replace('}\n}{',"}\n},{").replace('}{', '},{'))

@@ -778,5 +778,5 @@ regex_graph,regex_loop_starting,regex_loop_ending = convert_graph_to_regex(final
 
 networkxx_graph = convert_to_networkx(regex_graph,regex_loop_starting,regex_loop_ending)
 json_converted = json_graph.node_link_data(networkxx_graph)
-with open("graph.json","w") as outfile:
+with open("outputs\graph.json","w") as outfile:
   json.dump(json_converted,outfile,indent = 4)
