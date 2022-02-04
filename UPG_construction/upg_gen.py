@@ -165,7 +165,7 @@ for i in range(0,logs_range):
 	if isAppEntry(data[i]): 
 		if lms_state == None: #if the log is the first log of the application 
 			lms_cand = get_lms_regex(data[i]["lms"],lms_graph) #Do exhaustive search to find lms node
-			# print(i, " : LOG : ", data[i]["lms"], " || Candidate: ", lms_cand)
+			print(i, " : LOG : ", data[i]["lms"], " || Candidate: ", lms_cand)
 			lms_state = lms_cand
 			if(lms_state == None):
 				continue
@@ -174,7 +174,7 @@ for i in range(0,logs_range):
 		else:
 			temp,end_unit = match_lms(lms_cand, lms_graph, lms_state, eventUnit, data[i]) #else use their neighbours to find the lms node
 
-			# print(i, " : LOG : ", data[i]["lms"], " || Next Candidate: ", temp, " EndUnit ", end_unit)
+			print(i, " : LOG : ", data[i]["lms"], " || Next Candidate: ", temp, " EndUnit ", end_unit)
 			if temp!=None:
 				lms_state = temp
 			else:
@@ -188,7 +188,7 @@ for i in range(0,logs_range):
 		eventUnit[lms_pid].append(data[i]["lms"])
 		G.append(eventUnit[lms_pid])
 		end_unit = 0
-		# print(i, " PID ", lms_pid, " partitioned")
+		print(i, " PID ", lms_pid, " partitioned")
 		if lms_pid in eventUnit:
 			del eventUnit[lms_pid]
 
@@ -313,7 +313,7 @@ for i in range(0,logs_range):
 				if syscall_cnt[lms_pid]==0:
 					G.append(eventUnit[lms_pid])
 					del eventUnit[lms_pid]
-					# print(i, " PID ", lms_pid, " partitioned")
+					print(i, " PID ", lms_pid, " partitioned")
 	
 
 #add the remaining part in their execution partition based on PIDs
@@ -335,7 +335,6 @@ for execution_unit in G:
 	for log in execution_unit:
 		if "exe" in log:
 			# net_graph.add_edge(str(log["exe"]),str(log["path_name"]))
-			
 			if "syscall_name" in log:
 				lbl = str(log["syscall_name"]) + "("+ str(log["srn"])+")"
 				process = ""
@@ -344,19 +343,19 @@ for execution_unit in G:
 				process += str(log["exe"])+"_"+str(partition)
 				# "openat","open", was removed from here
 				if str(log["syscall_name"]) in ["creat","unlink","unlinkat","execve","write"]:
-					net_graph.add_edge(process,str(partition)+"_" + str(log["path_name"]),label = lbl)
+					net_graph.add_edge(process,str(partition)+"_" + str(log["path_name"]),label = lbl, ts = log['ts'])
 					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["path_name"])
 				elif str(log["syscall_name"]) in ["unlink","unlinkat"]:
-					net_graph.add_edge(process,str(partition)+"_" + str(log["path_name_old"]),label = lbl)				
+					net_graph.add_edge(process,str(partition)+"_" + str(log["path_name_old"]),label = lbl, ts = log['ts'])				
 					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["path_name_old"])
 				elif str(log["syscall_name"]) in ["connect","bind"]:
-					net_graph.add_edge(process,str(partition)+"_" + str(log["sock_laddr"])+":"+str(log["sock_lport"]),label = lbl)
+					net_graph.add_edge(process,str(partition)+"_" + str(log["sock_laddr"])+":"+str(log["sock_lport"]),label = lbl, ts = log['ts'])
 					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["sock_laddr"])+":"+str(log["sock_lport"])
 				elif str(log["syscall_name"]) in ["accept4","accept"]:
-					net_graph.add_edge(str(partition)+"_" + str(log["sock_laddr"])+" "+str(log["sock_lport"]),process,label = lbl)
+					net_graph.add_edge(str(partition)+"_" + str(log["sock_laddr"])+" "+str(log["sock_lport"]),process,label = lbl, ts = log['ts'])
 					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["sock_laddr"])+" "+str(log["sock_lport"])
 				elif str(log["syscall_name"]) in ["read"]:
-					net_graph.add_edge(str(partition)+"_" + str(log["path_name"]),process,label = lbl)
+					net_graph.add_edge(str(partition)+"_" + str(log["path_name"]),process,label = lbl, ts = log['ts'])
 					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["path_name"])
 
 json_converted = json_graph.node_link_data(net_graph)

@@ -4,3 +4,4 @@ UPG_construction/upg_gen2.py
 *.txt
 *.json
 *.html
+*.csv
