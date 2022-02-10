@@ -101,7 +101,7 @@ def parse_audit_log(fname):
 
 
         print(j)
-        with open('outputs\data.json', 'a') as f:
+        with open('data.json', 'a') as f:
             json.dump(j, f, indent=2)
         
         
@@ -149,7 +149,7 @@ def parse_acess_log(fname):
 
         
         print(j)
-        with open('outputs\data.json', 'a') as f:
+        with open('data.json', 'a') as f:
             json.dump(j, f, indent=2)             
         
         #the_datetime = datetime.datetime.fromtimestamp( epoch_time )  
@@ -196,7 +196,7 @@ def parse_error_log(fname):
         
         
             print(j)
-            with open('outputs\data.json', 'a') as f:
+            with open('data.json', 'a') as f:
                 json.dump(j, f, indent=2)             
         except:
             pass
@@ -220,9 +220,7 @@ if __name__ == '__main__':
     #    print("Please provide the log file in the cmdline")
 
     # Parding teh audit log
-
-    parse_audit_log("outputs\audit_164m.json")
-    #parse_audit_log("outputs\output_merged.txt")
+    parse_audit_log("./audit_164m.json")
 
     # #print("ACCESS LOG--->")
     # parse_acess_log("../logs/apache/rst1996/home/augumentedLogs/access.log")
@@ -231,11 +229,10 @@ if __name__ == '__main__':
     # #parse_error_log("../omegalog_implementation/logs/apache/rst1996/home/augumentedLogs/error.log")
     # parse_error_log("../logs/apache/testerror.log")
     
-
-    parse_error_log('samplelogs/access_1640089505.log')
+    parse_error_log('../samplelogs/access_1640089505.log')
     # print('\n\n************Apache access log parsed\n\n')
 
-    parse_error_log('samplelogs/error_1640089505.log')
+    parse_error_log('../samplelogs/error_1640089505.log')
     # print('\n\n************Apache access log parsed\n\n')
 
     # parse_error_log('mysql_logs/error_1633698258.log')
@@ -245,8 +242,8 @@ if __name__ == '__main__':
     # print('\n\n************MySQL query log parsed\n\n')
 
     
-    fin = open("outputs\data.json", "rt")
-    fout = open("outputs\data1.json", "wt")
+    fin = open("data.json", "rt")
+    fout = open("data1.json", "wt")
     
     for line in fin:
         	fout.write(line.replace('}\n}{',"}\n},{").replace('}{', '},{'))
