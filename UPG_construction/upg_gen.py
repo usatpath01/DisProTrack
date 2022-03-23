@@ -209,8 +209,9 @@ for i in range(0,logs_range):
 			temp_dict = {}
 			if "srn" in data[i]:
 				temp_dict["srn"] = data[i]["srn"]
-				if (temp_dict["srn"] in ["4486", "3857"]):
-					ttt = 1
+				# below 2 line is just for debugging ... comment it out whenever needed
+				# if (temp_dict["srn"] in ["4462", "3857"]):
+				# 	ttt = 1
 			else:
 				temp_dict["srn"] = None
 

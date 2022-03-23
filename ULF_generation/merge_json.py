@@ -116,8 +116,18 @@ def generate(fname):
             if ('data' in j ):
                 j_data = j['data']
 
+                # Added Else case for this instances:
+                # saddr=00000000000000000000000000000000 SADDR=unknown-family(0)
+
+                if('SADDR' in j_data and 'unknown-family' in j_data['SADDR']):
+                    data['sock_path'] = 'unknown-family(0)'
+                    
+
                 if('path' in j_data):
                     data['sock_path'] = j_data['path']
+                
+
+
                 
                 if('laddr' in j_data):
                     data['sock_laddr'] = j_data['laddr']

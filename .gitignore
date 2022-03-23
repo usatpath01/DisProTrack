@@ -1,4 +1,5 @@
 output/*
+dumps/*
 UPG_construction/upg_gen_old.py
 UPG_construction/upg_gen2.py
 *.txt

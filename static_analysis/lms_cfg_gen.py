@@ -40,6 +40,8 @@ def log_functions():
       check_func.add(addr)
     elif "log4c" in func.name:
       check_func.add(addr)
+    elif "log" in func.name:
+      check_func.add(addr)
     else:
       not_check_func.add(addr)
   return cfg,check_func,not_check_func

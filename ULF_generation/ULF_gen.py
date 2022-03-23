@@ -220,7 +220,7 @@ if __name__ == '__main__':
     #    print("Please provide the log file in the cmdline")
 
     # Parding teh audit log
-    parse_audit_log("audit_164m.json")
+    parse_audit_log("output/audit_164m.json")
 
     # #print("ACCESS LOG--->")
     # parse_acess_log("../logs/apache/rst1996/home/augumentedLogs/access.log")
