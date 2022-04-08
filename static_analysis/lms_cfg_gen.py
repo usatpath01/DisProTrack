@@ -1,4 +1,7 @@
 import pip
+import time
+import psutil
+
 def tryImport(packages):
 	''' If import error, then install the module '''
 	for package in packages:
@@ -26,6 +29,7 @@ parser.add_argument('--exe', dest='exe', nargs='+', default="./a.out", help='Pro
 parser.parse_args([])
 args = parser.parse_args()
 ##################################################################################################
+start_time = time.time()
 proj = angr.Project(args.exe[0],load_options={'auto_load_libs':False})
 ##################################################################################################
 def log_functions():
@@ -117,7 +121,7 @@ def extract_strings(node,cfg):
     cfg_node = cfg.get_any_node(node.addr)
     ins_addr = cfg_node.instruction_addrs
   except:
-    print("Block does not exist")
+    #print("Block does not exist")
     return ''
   else:
     if(len(ins_addr)>0):
@@ -353,7 +357,7 @@ def del_dummy_nodes(new_subgraph):
   #       final_graph[nodes].remove(node)
 
   final_graph = copy.deepcopy(new_subgraph) 
-  print(final_graph)
+  #print(final_graph)
   net_new_subgraph =  nx.DiGraph(new_subgraph)
   subgraph_nodes = net_new_subgraph.nodes
   # print(type(subgraph_nodes))
@@ -472,7 +476,7 @@ def find_loops(cfg,functions):
             try:
               func = cfg.kb.functions[node.addr]
             except:
-              print("function not found at this "+str(node.addr))
+              #print("function not found at this "+str(node.addr))
               pass
             else:
               function_names = get_syscall_function_name(func)
@@ -772,7 +776,7 @@ if args.visualize:
         nt.show_buttons(filter_=['physics'])
         nt.repulsion(central_gravity=0)
         nt.from_nx(V)
-        nt.show('lms_control_flow_graph.html')
+        nt.show('./outputs/lms_control_flow_graph.html')
     except:
         pass
 ##################################################################################################
@@ -780,5 +784,9 @@ regex_graph,regex_loop_starting,regex_loop_ending = convert_graph_to_regex(final
 
 networkxx_graph = convert_to_networkx(regex_graph,regex_loop_starting,regex_loop_ending)
 json_converted = json_graph.node_link_data(networkxx_graph)
-with open("outputs\graph.json","w") as outfile:
+with open("./outputs/graph.json","w") as outfile:
   json.dump(json_converted,outfile,indent = 4)
+print("Duration : %s seconds" % (time.time() - start_time))
+print("CPU utilization as a percentage :", psutil.cpu_percent())
+print(psutil.cpu_stats())
+print(psutil.cpu_freq())
