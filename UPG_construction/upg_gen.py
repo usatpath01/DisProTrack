@@ -12,14 +12,14 @@ syscall_cnt = {}
 
 def load_graph(): #Function to load the graph from json file
   
-	f = open("output/graph.json",)
+	f = open("./outputs/graph.json",)
 	data = json.load(f)
 	G = json_graph.node_link_graph(data)
 	# print(type(G))
 	return G
 
 def load_log(): #Function to load the log file from json file
-	f = open("output/universal_log.json",)
+	f = open("./outputs/universal_log.json",)
 
 	# f = open("uvl.json",)
 	data = json.load(f)
@@ -327,7 +327,7 @@ for lms_pid in pids:
 #clearing the data from memory
 eventUnit.clear()
 
-with open("partitioned_logs.json","w") as outfile:
+with open("./outputs/partitioned_logs.json","w") as outfile:
   json.dump(G,outfile,indent = 4)
 
 
@@ -362,15 +362,15 @@ for execution_unit in G:
 					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["path_name"])
 
 json_converted = json_graph.node_link_data(net_graph)
-with open("upg.json","w") as outfile:
+with open("./outputs/upg.json","w") as outfile:
   json.dump(json_converted,outfile,indent = 4)
 
-with open("aud_map.json", "w") as op:
+with open("./outputs/aud_map.json", "w") as op:
 	json.dump(aud_map, op, indent=1)
 
 nt = Network('1800px','1200px',directed=True, notebook=True)
 nt.show_buttons(filter_=['physics'])
 nt.from_nx(net_graph)
 nt.repulsion(central_gravity=0)
-nt.show('provenanceGraph.html')
+nt.show('./outputs/provenanceGraph.html')
 

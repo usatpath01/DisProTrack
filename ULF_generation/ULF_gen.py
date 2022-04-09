@@ -219,8 +219,8 @@ if __name__ == '__main__':
     #else:
     #    print("Please provide the log file in the cmdline")
 
-    # Parding teh audit log
-    parse_audit_log("output/audit_164m.json")
+    # Parsinging teh audit log
+    parse_audit_log("samplelogs/audit_1640089505_merged.json")
 
     # #print("ACCESS LOG--->")
     # parse_acess_log("../logs/apache/rst1996/home/augumentedLogs/access.log")
@@ -247,7 +247,7 @@ if __name__ == '__main__':
     fout = open("outputs\data1.json", "wt")
     
     for line in fin:
-        	fout.write(line.replace('}\n}{',"}\n},{").replace('}{', '},{'))
+        fout.write(line.replace('}\n}{',"}\n},{").replace('}{', '},{'))
         #close input and output files
     fin.close()
     fout.close()
