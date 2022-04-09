@@ -120,9 +120,13 @@ Port 22 is the default SSH port and the port 80 is reserved for HTTP serving. No
 ```bash
 	cd static_analysis
 	python3 lms_cfg_gen.py --exe <path of binary file>
-	#python3 lms_cfg_gen.py --exe ../binaries/apache2
-	#a graph.json file will be created after successful completion of the command.
 ```
+E.g.
+```bash
+	python3 lms_cfg_gen.py --exe ../binaries/apache2
+```
+On successful execution of the program, a graph.json file will be created.
+
 
 ```bash
 	cd ../ULF_generation
