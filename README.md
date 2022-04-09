@@ -147,7 +147,7 @@ The output file will contain the logs in json format
 	
 2. Combine the json formatted audit logs based on the srn
 ```bash
-    sort audit_1640089505.json > audit_1640089505_sorted.json
+    sort samplelogs/audit_1640089505.json > samplelogs/audit_1640089505_sorted.json
 ```
 ```bash
     python3 merge_json.py <output filename> > <merged output filename
