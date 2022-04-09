@@ -141,7 +141,7 @@ On successful execution of the program, a graph.json file will be created.
 ```	
 E.g.
 ```bash
-    python3 ULF_generation/parsetojson.py samplelogs/audit_1640089505.log > audit_164.json
+    python3 ULF_generation/parsetojson.py samplelogs/audit_1640089505.log > samplelogs/audit_1640089505.json
 ```
 The output file will contain the logs in json format
 	
