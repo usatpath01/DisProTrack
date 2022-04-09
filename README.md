@@ -115,18 +115,9 @@ Then sshed to VM from host machine.
 Port 22 is the default SSH port and the port 80 is reserved for HTTP serving. Now what we have done is, asking the idle port 2203 of our host machine to listen to the port 22 of the guest VM. So through the localhost of our host machine, we can remote login to VM. On the other hand, the same has done for the HTTP serving.
 
 
-## Appendix
-
-1. https://www.virtualbox.org/manual/ch08.html#vboxmanage-showvminfo
-2. https://networking.ringofsaturn.com/Unix/Create_Virtual_Machine_VBoxManage.php
-3. https://tecadmin.net/install-oracle-virtualbox-on-ubuntu/
-4. https://www.nakivo.com/blog/virtualbox-network-setting-guide/
-5. https://www.oracle.com/technical-resources/articles/it-infrastructure/admin-manage-vbox-cli.html
-6.  https://medium.com/platform-engineer/port-forwarding-for-ssh-http-on-virtualbox-459277a888be
-
-
+# Testing
+## static analysis on binaries to detemine the LMS and CFA to determine the relationship between the LMS
 ```bash
-	# static analysis on binaries to detemine the LMS and CFA to determine the relationship between the LMS
 	cd static_analysis
 	python3 lms_cfg_gen.py --exe <path of binary file>
 	#python3 lms_cfg_gen.py --exe ../binaries/apache2
@@ -174,3 +165,12 @@ Port 22 is the default SSH port and the port 80 is reserved for HTTP serving. No
 		-> f = open("graph.json",)  ---->(change with the line)----> f = open("../static_analysis/graph.json",)
 		-> f = open("universal_log.json",)  ---->(change with the line)----> f = open("../ULF_generation/universal_log.json",)
 	python3 upg_gen.py		#this will generate a provenanceGraph.html file which the graph, open in the browser to view that.
+
+## Appendix
+
+1. https://www.virtualbox.org/manual/ch08.html#vboxmanage-showvminfo
+2. https://networking.ringofsaturn.com/Unix/Create_Virtual_Machine_VBoxManage.php
+3. https://tecadmin.net/install-oracle-virtualbox-on-ubuntu/
+4. https://www.nakivo.com/blog/virtualbox-network-setting-guide/
+5. https://www.oracle.com/technical-resources/articles/it-infrastructure/admin-manage-vbox-cli.html
+6.  https://medium.com/platform-engineer/port-forwarding-for-ssh-http-on-virtualbox-459277a888be
