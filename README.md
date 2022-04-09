@@ -119,7 +119,6 @@ Port 22 is the default SSH port and the port 80 is reserved for HTTP serving. No
 ## LMS CGF Genearion Phase
 Static analysis on binaries to detemine the LMS and CFG to determine the relationship between the LMS
 ```bash
-	cd static_analysis
 	python3 lms_cfg_gen.py --exe <path of binary file>
 ```
 E.g.
@@ -132,9 +131,6 @@ On successful execution of the program, a graph.json file will be created.
 
 ## Universal Log File Generation
 
-```bash
-	$ cd ../ULF_generation
-```
 1. Parsing the audit logs into json format
 ```bash	
     python3 parsetojson.py <path to audit log> > <output file name>
@@ -158,7 +154,7 @@ E.g.
 ```
 3. Combine the application logs and audit log into a single file named data1.json
 ```bash
-    python3 ULF_gen.py
+    python3 ULF_generation/ULF_gen.py
 ```
 4. Sort the universal log file based on date/ts, generates the universal_log.json
 ```bash
