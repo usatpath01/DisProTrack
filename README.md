@@ -150,11 +150,11 @@ The output file will contain the logs in json format
     sort samplelogs/audit_1640089505.json > samplelogs/audit_1640089505_sorted.json
 ```
 ```bash
-    python3 merge_json.py <output filename> > <merged output filename
+    python3 merge_json.py <output filename> > <merged output filename>
 ```
 E.g.
 ```bash
-    python3 merge_json.py audit_164s.json > audit_164m.json
+    python3 ULF_generation/merge_json.py samplelogs/audit_1640089505_sorted.json > samplelogs/audit_1640089505_merged.json
 ```
 3. Combine the application logs and audit log into a single file named data1.json
 ```bash
