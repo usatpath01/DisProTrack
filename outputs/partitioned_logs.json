@@ -1,0 +1,233 @@
+[
+    [
+        "[Tue Dec 21 17:52:52.301096 2021] [watchdog:debug] [pid 2604] mod_watchdog.c(452): AH010033: Watchdog: Running with WatchdogInterval 1000ms",
+        "[Tue Dec 21 17:52:52.301205 2021] [watchdog:debug] [pid 2604] mod_watchdog.c(461): AH02974: Watchdog: found parent providers.",
+        "[Tue Dec 21 17:52:52.301221 2021] [watchdog:debug] [pid 2604] mod_watchdog.c(507): AH02977: Watchdog: found child providers.",
+        "[Tue Dec 21 17:52:52.304923 2021] [mpm_prefork:notice] [pid 2604] AH00163: Apache/2.4.41 (Ubuntu) configured -- resuming normal operations"
+    ],
+    [
+        "[Tue Dec 21 17:52:52.304946 2021] [mpm_prefork:info] [pid 2604] AH00164: Server built: 2021-10-14T16:24:43"
+    ],
+    [
+        "[Tue Dec 21 17:52:52.304984 2021] [core:debug] [pid 2604] log.c(1568): AH02639: Using SO_REUSEPORT: yes (1)"
+    ],
+    [
+        "[Tue Dec 21 17:53:21.986350 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60179] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:53:21.986499 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60179] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "[Tue Dec 21 17:53:21.989752 2021] [deflate:debug] [pid 2605] mod_deflate.c(854): [client 192.168.1.5:60179] AH01384: Zlib: Compressed 417 to 269 : URL /todo/hashgen.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:53:21 +0530] \"GET /todo/hashgen.php HTTP/1.1\" 200 539 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:53:28.503082 2021] [authz_core:debug] [pid 2607] mod_authz_core.c(817): [client 192.168.1.5:60180] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/hashgen.php"
+    ],
+    [
+        "[Tue Dec 21 17:53:28.503234 2021] [authz_core:debug] [pid 2607] mod_authz_core.c(817): [client 192.168.1.5:60180] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/hashgen.php"
+    ],
+    [
+        "[Tue Dec 21 17:53:28.504203 2021] [php7:warn] [pid 2607] [client 192.168.1.5:60180] PHP Warning:  Use of undefined constant get_hash - assumed 'get_hash' (this will throw an Error in a future version of PHP) in /var/www/html/todo/hashgen.php on line 24, referer: http://192.168.1.7/todo/hashgen.php"
+    ],
+    [
+        "[Tue Dec 21 17:53:28.504828 2021] [deflate:debug] [pid 2607] mod_deflate.c(854): [client 192.168.1.5:60180] AH01384: Zlib: Compressed 486 to 320 : URL /todo/hashgen.php, referer: http://192.168.1.7/todo/hashgen.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:53:28 +0530] \"GET /todo/hashgen.php?get_hash=adversary HTTP/1.1\" 200 590 \"http://192.168.1.7/todo/hashgen.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:53:53.301343 2021] [authz_core:debug] [pid 2608] mod_authz_core.c(817): [client 192.168.1.5:60181] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:53:53.301506 2021] [authz_core:debug] [pid 2608] mod_authz_core.c(817): [client 192.168.1.5:60181] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "[Tue Dec 21 17:53:53.302580 2021] [php7:warn] [pid 2608] [client 192.168.1.5:60181] PHP Warning:  Use of undefined constant get_hash - assumed 'get_hash' (this will throw an Error in a future version of PHP) in /var/www/html/todo/hashgen.php on line 24"
+    ],
+    [
+        "[Tue Dec 21 17:53:53.303079 2021] [deflate:debug] [pid 2608] mod_deflate.c(854): [client 192.168.1.5:60181] AH01384: Zlib: Compressed 484 to 318 : URL /todo/hashgen.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:53:53 +0530] \"GET /todo/hashgen.php?get_hash=victory HTTP/1.1\" 200 588 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:54:03.410797 2021] [authz_core:debug] [pid 2606] mod_authz_core.c(817): [client 192.168.1.5:60210] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:03.411209 2021] [authz_core:debug] [pid 2606] mod_authz_core.c(817): [client 192.168.1.5:60210] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:03.411500 2021] [authz_core:debug] [pid 2606] mod_authz_core.c(817): [client 192.168.1.5:60210] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:03.411532 2021] [authz_core:debug] [pid 2606] mod_authz_core.c(817): [client 192.168.1.5:60210] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:03 +0530] \"GET /todo/ HTTP/1.1\" 302 461 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ],
+    [
+        "[Tue Dec 21 17:54:03.433082 2021] [authz_core:debug] [pid 2606] mod_authz_core.c(817): [client 192.168.1.5:60210] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:03.433142 2021] [authz_core:debug] [pid 2606] mod_authz_core.c(817): [client 192.168.1.5:60210] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:03.436683 2021] [deflate:debug] [pid 2606] mod_deflate.c(854): [client 192.168.1.5:60210] AH01384: Zlib: Compressed 2258 to 1061 : URL /todo/login.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:03 +0530] \"GET /todo/login.php HTTP/1.1\" 200 1441 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ],
+    [
+        "[Tue Dec 21 17:54:03.530962 2021] [authz_core:debug] [pid 2606] mod_authz_core.c(817): [client 192.168.1.5:60210] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:03.531020 2021] [authz_core:debug] [pid 2606] mod_authz_core.c(817): [client 192.168.1.5:60210] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:03.531083 2021] [core:info] [pid 2606] [client 192.168.1.5:60210] AH00128: File does not exist: /var/www/html/favicon.ico, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:03 +0530] \"GET /favicon.ico HTTP/1.1\" 404 489 \"http://192.168.1.7/todo/login.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ],
+    [
+        "[Tue Dec 21 17:54:11.542803 2021] [authz_core:debug] [pid 2609] mod_authz_core.c(817): [client 192.168.1.5:60215] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:11.542999 2021] [authz_core:debug] [pid 2609] mod_authz_core.c(817): [client 192.168.1.5:60215] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:11 +0530] \"POST /todo/login.php HTTP/1.1\" 302 403 \"http://192.168.1.7/todo/login.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ],
+    [
+        "[Tue Dec 21 17:54:11.553361 2021] [authz_core:debug] [pid 2609] mod_authz_core.c(817): [client 192.168.1.5:60215] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:11.553509 2021] [authz_core:debug] [pid 2609] mod_authz_core.c(817): [client 192.168.1.5:60215] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:11.558318 2021] [deflate:debug] [pid 2609] mod_deflate.c(854): [client 192.168.1.5:60215] AH01384: Zlib: Compressed 385 to 270 : URL /todo/index.php, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:11 +0530] \"GET /todo/index.php HTTP/1.1\" 200 649 \"http://192.168.1.7/todo/login.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ],
+    [
+        "[Tue Dec 21 17:54:25.367974 2021] [authz_core:debug] [pid 2611] mod_authz_core.c(817): [client 192.168.1.5:60227] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:25.368044 2021] [authz_core:debug] [pid 2611] mod_authz_core.c(817): [client 192.168.1.5:60227] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:25.368149 2021] [authz_core:debug] [pid 2611] mod_authz_core.c(817): [client 192.168.1.5:60227] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:25.368169 2021] [authz_core:debug] [pid 2611] mod_authz_core.c(817): [client 192.168.1.5:60227] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:25 +0530] \"GET /todo/ HTTP/1.1\" 302 403 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:54:25.375344 2021] [authz_core:debug] [pid 2611] mod_authz_core.c(817): [client 192.168.1.5:60227] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:25.375388 2021] [authz_core:debug] [pid 2611] mod_authz_core.c(817): [client 192.168.1.5:60227] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:25.376060 2021] [deflate:debug] [pid 2611] mod_deflate.c(854): [client 192.168.1.5:60227] AH01384: Zlib: Compressed 2258 to 1061 : URL /todo/login.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:25 +0530] \"GET /todo/login.php HTTP/1.1\" 200 1441 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:54:34.320428 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60228] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:34.320532 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60228] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:34 +0530] \"POST /todo/login.php HTTP/1.1\" 302 403 \"http://192.168.1.7/todo/login.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:54:34.329405 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60228] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:34.329675 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60228] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:34.331934 2021] [deflate:debug] [pid 2605] mod_deflate.c(854): [client 192.168.1.5:60228] AH01384: Zlib: Compressed 385 to 270 : URL /todo/index.php, referer: http://192.168.1.7/todo/login.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:34 +0530] \"GET /todo/index.php HTTP/1.1\" 200 649 \"http://192.168.1.7/todo/login.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:54:36.141821 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60228] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:36.142019 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60228] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:36 +0530] \"GET /todo/logout.php HTTP/1.1\" 302 336 \"http://192.168.1.7/todo/index.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:54:36.151822 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60228] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:36.151934 2021] [authz_core:debug] [pid 2605] mod_authz_core.c(817): [client 192.168.1.5:60228] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:36.153478 2021] [deflate:debug] [pid 2605] mod_deflate.c(854): [client 192.168.1.5:60228] AH01384: Zlib: Compressed 2258 to 1061 : URL /todo/login.php, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:36 +0530] \"GET /todo/login.php HTTP/1.1\" 200 1441 \"http://192.168.1.7/todo/index.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36\""
+    ],
+    [
+        "[Tue Dec 21 17:54:38.756614 2021] [authz_core:debug] [pid 2607] mod_authz_core.c(817): [client 192.168.1.5:60221] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:38.756720 2021] [authz_core:debug] [pid 2607] mod_authz_core.c(817): [client 192.168.1.5:60221] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:38 +0530] \"GET /todo/logout.php HTTP/1.1\" 302 337 \"http://192.168.1.7/todo/index.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ],
+    [
+        "[Tue Dec 21 17:54:38.764578 2021] [authz_core:debug] [pid 2607] mod_authz_core.c(817): [client 192.168.1.5:60221] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:38.764688 2021] [authz_core:debug] [pid 2607] mod_authz_core.c(817): [client 192.168.1.5:60221] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:38.766864 2021] [deflate:debug] [pid 2607] mod_deflate.c(854): [client 192.168.1.5:60221] AH01384: Zlib: Compressed 2258 to 1061 : URL /todo/login.php, referer: http://192.168.1.7/todo/index.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:38 +0530] \"GET /todo/login.php HTTP/1.1\" 200 1441 \"http://192.168.1.7/todo/index.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ],
+    [
+        "[Tue Dec 21 17:54:46.955444 2021] [authz_core:debug] [pid 2608] mod_authz_core.c(817): [client 192.168.1.5:60229] AH01626: authorization result of Require all granted: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:46.955532 2021] [authz_core:debug] [pid 2608] mod_authz_core.c(817): [client 192.168.1.5:60229] AH01626: authorization result of <RequireAny>: granted"
+    ],
+    [
+        "[Tue Dec 21 17:54:46.955835 2021] [deflate:debug] [pid 2608] mod_deflate.c(854): [client 192.168.1.5:60229] AH01384: Zlib: Compressed 417 to 269 : URL /todo/hashgen.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:46 +0530] \"GET /todo/hashgen.php HTTP/1.1\" 200 539 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ],
+    [
+        "[Tue Dec 21 17:54:51.830782 2021] [authz_core:debug] [pid 2608] mod_authz_core.c(817): [client 192.168.1.5:60229] AH01626: authorization result of Require all granted: granted, referer: http://192.168.1.7/todo/hashgen.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:51.830857 2021] [authz_core:debug] [pid 2608] mod_authz_core.c(817): [client 192.168.1.5:60229] AH01626: authorization result of <RequireAny>: granted, referer: http://192.168.1.7/todo/hashgen.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:51.830990 2021] [php7:warn] [pid 2608] [client 192.168.1.5:60229] PHP Warning:  Use of undefined constant get_hash - assumed 'get_hash' (this will throw an Error in a future version of PHP) in /var/www/html/todo/hashgen.php on line 24, referer: http://192.168.1.7/todo/hashgen.php"
+    ],
+    [
+        "[Tue Dec 21 17:54:51.831162 2021] [deflate:debug] [pid 2608] mod_deflate.c(854): [client 192.168.1.5:60229] AH01384: Zlib: Compressed 481 to 315 : URL /todo/hashgen.php, referer: http://192.168.1.7/todo/hashgen.php"
+    ],
+    [
+        "192.168.1.5 - - [21/Dec/2021:17:54:51 +0530] \"GET /todo/hashgen.php?get_hash=test HTTP/1.1\" 200 584 \"http://192.168.1.7/todo/hashgen.php\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43\""
+    ]
+]
