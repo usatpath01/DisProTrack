@@ -124,7 +124,7 @@ Static analysis on binaries to detemine the LMS and CFG to determine the relatio
 ```
 E.g.
 ```bash
-	python3 lms_cfg_gen.py --exe ../binaries/apache2
+	 python3 .\static_analysis\lms_cfg_gen.py --exe ./binaries/apache2 
 ```
 On successful execution of the program, a graph.json file will be created.
 
