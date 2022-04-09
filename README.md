@@ -158,7 +158,7 @@ E.g.
 ```
 4. Sort the universal log file based on date/ts, generates the universal_log.json
 ```bash
-    python3 sort_ULF.py
+    python3 ULF_generation/sort_ULF.py
 ```
 
 ## Construction of the Universal Provenance Graph
