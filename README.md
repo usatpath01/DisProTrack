@@ -117,7 +117,7 @@ Port 22 is the default SSH port and the port 80 is reserved for HTTP serving. No
 
 # Testing
 ## LMS CGF Genearion Phase
-### Static analysis on binaries to detemine the LMS and CFG to determine the relationship between the LMS
+Static analysis on binaries to detemine the LMS and CFG to determine the relationship between the LMS
 ```bash
 	cd static_analysis
 	python3 lms_cfg_gen.py --exe <path of binary file>
@@ -165,16 +165,20 @@ E.g.
     python3 sort_ULF.py
 ```
 
+## Construction of the Universal Provenance Graph
+To-do: Changes are required to the code to take the path of the graph.json and universal_log.json as per the local machine
+	
 ```bash
-	# Construction of the universal provenance graph
-	# Changes are required to the code to take the path of the graph.json and universal_log.json as per the local machine
 	python3 upg_gen.py
-	# Generates package-lock, sample_output and provenanceGraph.html as an output.
 ```	
+Generates package-lock, sample_output and provenanceGraph.html as an output.
 
-
+# Complete Sequence
+```bash
 	cd static_analysis
 	python3 lms_cfg_gen.py --exe ../binaries/apache2
+```	
+```bash
 	cd ULF_generation
 	python3 parsetojson.py samplelogs/audit_1640089505.log > audit_164.json
 	sort audit_164.json > audit_164s.json
@@ -185,11 +189,15 @@ E.g.
 		-> parse_error_log('../../LOGS_0311/error_1640089505.log')    ---->(change with the line)---->   parse_error_log('../samplelogs/error_1640089505.log')
 	python3 ULF_gen.py
 	python3 sort_ULF.py 	#this will generate an universal_log.json file
-	cd ../UPG_construction
+```
+```bash
+    cd ../UPG_construction
 	Open the upg_gen file in the text editor and make the following changes
 		-> f = open("graph.json",)  ---->(change with the line)----> f = open("../static_analysis/graph.json",)
 		-> f = open("universal_log.json",)  ---->(change with the line)----> f = open("../ULF_generation/universal_log.json",)
-	python3 upg_gen.py		#this will generate a provenanceGraph.html file which the graph, open in the browser to view that.
+	python3 upg_gen.py		
+```
+This will generate a provenanceGraph.html file which is the graph. It can be viewed in a browser.
 
 ## Appendix
 
