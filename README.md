@@ -116,7 +116,8 @@ Port 22 is the default SSH port and the port 80 is reserved for HTTP serving. No
 
 
 # Testing
-## static analysis on binaries to detemine the LMS and CFA to determine the relationship between the LMS
+## LMS CGF Genearion Phase
+### Static analysis on binaries to detemine the LMS and CFG to determine the relationship between the LMS
 ```bash
 	cd static_analysis
 	python3 lms_cfg_gen.py --exe <path of binary file>
@@ -128,20 +129,40 @@ E.g.
 On successful execution of the program, a graph.json file will be created.
 
 
+
+## Universal Log File Generation
+
 ```bash
-	cd ../ULF_generation
-	# parsing the audit logs into json format
-	python3 parsetojson.py <path to audit log> > <output file name>
-	# python3 ULF_generation/parsetojson.py samplelogs/audit_1640089505.log > audit_164.json
-	# the output file will contain the logs in json format
-	# Combine the json formatted audit logs based on the srn
-	sort audit_164.json > audit_164s.json
-	python3 merge_json.py <output filename> > <merged output filename
-	#python3 merge_json.py audit_164s.json > audit_164m.json
-	# Combine the application logs and audit log into a single file named data1.json
-	python3 ULF_gen.py
-	# Sort the universal log file based on date/ts, generates the universal_log.json
-	python3 sort_ULF.py
+	$ cd ../ULF_generation
+```
+1. Parsing the audit logs into json format
+```bash	
+    python3 parsetojson.py <path to audit log> > <output file name>
+```	
+E.g.
+```bash
+    python3 ULF_generation/parsetojson.py samplelogs/audit_1640089505.log > audit_164.json
+```
+The output file will contain the logs in json format
+	
+2. Combine the json formatted audit logs based on the srn
+```bash
+    sort audit_164.json > audit_164s.json
+```
+```bash
+    python3 merge_json.py <output filename> > <merged output filename
+```
+E.g.
+```bash
+    python3 merge_json.py audit_164s.json > audit_164m.json
+```
+3. Combine the application logs and audit log into a single file named data1.json
+```bash
+    python3 ULF_gen.py
+```
+4. Sort the universal log file based on date/ts, generates the universal_log.json
+```bash
+    python3 sort_ULF.py
 ```
 
 ```bash
