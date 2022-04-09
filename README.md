@@ -165,7 +165,7 @@ E.g.
 To-do: Changes are required to the code to take the path of the graph.json and universal_log.json as per the local machine
 	
 ```bash
-	python3 upg_gen.py
+	python3 ./UPG_construction/upg_gen.py
 ```	
 Generates package-lock, sample_output and provenanceGraph.html as an output.
 
