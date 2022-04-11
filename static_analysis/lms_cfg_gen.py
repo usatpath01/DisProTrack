@@ -434,7 +434,8 @@ def find_loops(cfg,functions):
           try:
             func = cfg.kb.functions[node.addr]
           except:
-            print("function not found at this "+str(node.addr))
+            #print("function not found at this "+str(node.addr))
+            pass
           else:
             function_names = get_syscall_function_name(func)
             for name in function_names:
@@ -756,6 +757,12 @@ def convert_to_networkx(graph,regex_loop_starting,regex_loop_ending):
     G.nodes[node]["lms"] = node[1]
   return G
 
+
+# To return number of connected component in a DiGraph
+def getCCCount(G):
+  return nx.number_connected_components(G.to_undirected())  
+
+
 cfg,check_func,not_check_func = log_functions() #Functions having log message strings
 # plot_cfg(cfg,"test_cfg", remove_imports=True, remove_path_terminator=True)
 req_func = extract_call_sites(cfg,check_func) #Get parent functions 
@@ -790,3 +797,10 @@ print("Duration : %s seconds" % (time.time() - start_time))
 print("CPU utilization as a percentage :", psutil.cpu_percent())
 print(psutil.cpu_stats())
 print(psutil.cpu_freq())
+
+
+## Additional Stats logging
+with open("./outputs/lms_gen_stats.txt","a+") as logfile:
+  stats = "LMSes: " + str(networkxx_graph.number_of_nodes()) + ", No. of Edges in LMS Control Flow Graph: " + str(networkxx_graph.number_of_edges()) + ", Num of Connected Components: " + str(getCCCount(networkxx_graph))
+  logfile.write(stats)
+  logfile.close()
