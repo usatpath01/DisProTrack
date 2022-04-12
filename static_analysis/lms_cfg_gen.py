@@ -793,11 +793,21 @@ networkxx_graph = convert_to_networkx(regex_graph,regex_loop_starting,regex_loop
 json_converted = json_graph.node_link_data(networkxx_graph)
 with open("./outputs/graph.json","w") as outfile:
   json.dump(json_converted,outfile,indent = 4)
-print("Duration : %s seconds" % (time.time() - start_time))
-print("CPU utilization as a percentage :", psutil.cpu_percent())
-print(psutil.cpu_stats())
-print(psutil.cpu_freq())
 
+#print("Duration : %s seconds" % (time.time() - start_time))
+#print("CPU utilization as a percentage :", psutil.cpu_percent())
+#print(psutil.cpu_stats())
+#print(psutil.cpu_freq())
+
+## Static Analysis Performance Stats logging
+with open("./outputs/time_resource_util.txt","a+") as logfile:
+  stats = "static analysis - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
+  logfile.seek(0)
+  data = logfile.read(100)
+  if len(data) > 0:
+    logfile.write("\n")
+  logfile.write(stats)
+  logfile.close()
 
 ## Additional Stats logging
 with open("./outputs/lms_gen_stats.txt","a+") as logfile:

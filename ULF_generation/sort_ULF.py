@@ -5,7 +5,10 @@ import pprint
 import ast
 from operator import itemgetter
 from dateutil import parser
+import time
+import psutil
 
+start_time = time.time()
 
 def parse_date(datestr):
     return datetime.strptime(datestr[:-3], "%Y-%m-%d %H:%M:%S.%f")
@@ -49,6 +52,15 @@ with open(r"outputs\universal_log.json", 'a') as f:
 #     json.dump(newlist, f, indent=2)  
 
 print("------Sorting Completed and dumped to file-----")
+
+with open("./outputs/time_resource_util.txt","a+") as logfile:
+    stats = "ULF_gen - sort_ulf - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
+    logfile.seek(0)
+    data = logfile.read(100)
+    if len(data) > 0:
+        logfile.write("\n")
+    logfile.write(stats)
+    logfile.close()
 #print(D3)
 #print(type(D3))
 
