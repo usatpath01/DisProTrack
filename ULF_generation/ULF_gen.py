@@ -259,7 +259,7 @@ if __name__ == '__main__':
     
     #exec(open('sort_log_files.py').read())
     ## ULF Generation Performance Stats logging
-    with open("./outputs/time_resource_util.txt","a+") as logfile:
+    with open("outputs/time_resource_util.txt","a+") as logfile:
         stats = "ULF_gen - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
         logfile.seek(0)
         data = logfile.read(100)
