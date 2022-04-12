@@ -12,6 +12,7 @@ import sys
 import datetime
 from datetime import datetime
 import time
+import psutil
 #from pandas import json_normalize
 #import sort_log_files
 
@@ -148,7 +149,8 @@ def parse_acess_log(fname):
         #print(tkns1)
 
         
-        print(j)
+        #uncomment after testing
+        #print(j)
         with open('outputs\data.json', 'a') as f:
             json.dump(j, f, indent=2)             
         
@@ -174,7 +176,8 @@ def parse_error_log(fname):
             #tt3 = re.findall(r'(\w{3})\s(\w{3})\s(\d{2})\s(\d+)(\:)(\d+)(\:)(\d+)(\.)(\d+)\s(\d{4})', tkns[0])
                     
             tt3 = re.findall(r"^(pid \= \d+)\, (date \= \[\d+\])(.*)", line)
-            print('tt3', tt3)
+            #uncomment after testing
+            # print('tt3', tt3)
             j = {}
             for i in pid:
                 j["pid"] = int(i.split('=')[1])
@@ -194,8 +197,8 @@ def parse_error_log(fname):
 
             j["lms"] = tt3[0][2].strip()
         
-        
-            print(j)
+            #uncomment after testing
+            #print(j)
             with open('outputs\data.json', 'a') as f:
                 json.dump(j, f, indent=2)             
         except:
@@ -214,6 +217,7 @@ def parse_error_log(fname):
 # For parsing audit log use parse_audit_log
 # For parsing other log files use parse_error_log
 if __name__ == '__main__':
+    start_time = time.time()
     #if(len(sys.argv) > 1):
     #    parse2(sys.argv[1])
     #else:
@@ -253,3 +257,12 @@ if __name__ == '__main__':
     fout.close()
     
     #exec(open('sort_log_files.py').read())
+    ## ULF Generation Performance Stats logging
+    with open("./outputs/time_resource_util.txt","a+") as logfile:
+        stats = "ULF_gen - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
+        logfile.seek(0)
+        data = logfile.read(100)
+        if len(data) > 0:
+            logfile.write("\n")
+        logfile.write(stats)
+        logfile.close()
