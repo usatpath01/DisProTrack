@@ -58,8 +58,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([]);
-        edges = new vis.DataSet([]);
+        nodes = new vis.DataSet([{"id": "[3247]/usr/bin/sed_37", "label": "[3247]/usr/bin/sed_37", "shape": "dot", "size": 10}, {"id": "37_/lib64/ld-linux-x86-64.so.2", "label": "37_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "[3246]/usr/bin/systemctl_38", "label": "[3246]/usr/bin/systemctl_38", "shape": "dot", "size": 10}, {"id": "38_/lib64/ld-linux-x86-64.so.2", "label": "38_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "38_None:None", "label": "38_None:None", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "[3247]/usr/bin/sed_37", "label": "execve(23237)", "to": "37_/lib64/ld-linux-x86-64.so.2", "ts": 1639762166872000000, "weight": 1}, {"arrows": "to", "from": "[3246]/usr/bin/systemctl_38", "label": "execve(23245)", "to": "38_/lib64/ld-linux-x86-64.so.2", "ts": 1639762166872000000, "weight": 1}, {"arrows": "to", "from": "[3246]/usr/bin/systemctl_38", "label": "connect(23287)", "to": "38_None:None", "ts": 1639762166876000000, "weight": 1}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};

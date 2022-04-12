@@ -70,14 +70,14 @@ if __name__ == '__main__':
         parse2(sys.argv[1])
     else:
         print("Please provide the log file in the cmdline")
-    
-    with open("./outputs/time_resource_util.txt","a+") as logfile:
-        stats = "ULF_gen - parse_to_json - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
-        logfile.seek(0)
-        data = logfile.read(100)
-        if len(data) > 0:
-            logfile.write("\n")
-        logfile.write(stats)
-        logfile.close()
+
+with open("outputs/time_resource_util.txt","a+") as logfile:
+	stats = "ULF_gen - parse_to_json - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
+	logfile.seek(0)
+	data = logfile.read(100)
+	if len(data) > 0:
+		logfile.write("\n")
+	logfile.write(stats)
+	logfile.close()
     # parse2("aduitdemo.txt")
     # main()

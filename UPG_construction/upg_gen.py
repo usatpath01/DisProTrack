@@ -15,14 +15,14 @@ syscall_cnt = {}
 
 def load_graph(): #Function to load the graph from json file
   
-	f = open("./outputs/graph.json",)
+	f = open("outputs/graph.json",)
 	data = json.load(f)
 	G = json_graph.node_link_graph(data)
 	# print(type(G))
 	return G
 
 def load_log(): #Function to load the log file from json file
-	f = open("./outputs/universal_log.json",)
+	f = open("outputs/universal_log.json",)
 
 	# f = open("uvl.json",)
 	data = json.load(f)
@@ -128,7 +128,7 @@ def match_lms(lms_cand, lms_graph, lms_state, eventUnit, data):
 			return final_regex_node,0
 	# return final_regex_node
 
-	with open("./outputs/time_resource_util.txt","a+") as logfile:
+	with open("outputs/time_resource_util.txt","a+") as logfile:
 		stats = "upg_gen - match_lms " + "Execution Time: " + str((time.time() - start_time_ml)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
 		logfile.seek(0)
 		data = logfile.read(100)
@@ -157,7 +157,7 @@ def get_lms_regex(event,G):
 			mx = temp_cmp
 			final_regex_node = node
 	return final_regex_node
-	with open("./outputs/time_resource_util.txt","a+") as logfile:
+	with open("outputs/time_resource_util.txt","a+") as logfile:
 		stats = "upg_gen - get_lms_regex " + "Execution Time: " + str((time.time() - start_time_glr)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
 		logfile.seek(0)
 		data = logfile.read(100)
@@ -331,7 +331,8 @@ for i in range(0,logs_range):
 						tmp_fd = temp_dict['arg0']
 						if(tmp_fd in fd_map[temp_dict["pid"]]):
 							temp_dict["path_name"] = fd_map[temp_dict["pid"]][tmp_fd]
-						print("Resolved Name :: ",temp_dict["srn"],temp_dict["syscall_name"], temp_dict["pid"],tmp_fd, temp_dict["path_name"])
+						#uncomment after testing
+						#print("Resolved Name :: ",temp_dict["srn"],temp_dict["syscall_name"], temp_dict["pid"],tmp_fd, temp_dict["path_name"])
 			else:
 				temp_dict["syscall_name"] = None
 
@@ -389,19 +390,19 @@ for execution_unit in G:
 					aud_map[str(log["srn"])] = str(partition)+"_" + str(log["path_name"])
 
 json_converted = json_graph.node_link_data(net_graph)
-with open("./outputs/upg.json","w") as outfile:
+with open("outputs/upg.json","w") as outfile:
   json.dump(json_converted,outfile,indent = 4)
 
-with open("./outputs/aud_map.json", "w") as op:
+with open("outputs/aud_map.json", "w") as op:
 	json.dump(aud_map, op, indent=1)
 
 nt = Network('1800px','1200px',directed=True, notebook=True)
 nt.show_buttons(filter_=['physics'])
 nt.from_nx(net_graph)
 nt.repulsion(central_gravity=0)
-nt.show('./outputs/provenanceGraph.html')
+nt.show('outputs/provenanceGraph.html')
 
-with open("./outputs/time_resource_util.txt","a+") as logfile:
+with open("outputs/time_resource_util.txt","a+") as logfile:
     stats = "upg_gen - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
     logfile.seek(0)
     data = logfile.read(100)

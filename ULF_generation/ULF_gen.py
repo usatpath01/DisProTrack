@@ -51,7 +51,8 @@ def parse1(fname):
     for line in file.readlines():
         line = line.strip();
         line.replace("\x1d"," ")
-        print(parse_kv_pairs(line))
+        #uncomment after testing
+	#print(parse_kv_pairs(line))
     file.close()
 
 
@@ -100,9 +101,9 @@ def parse_audit_log(fname):
         j["Date"] = s
         j["ts"] = tmpDate
 
-
-        print(j)
-        with open('outputs\data.json', 'a') as f:
+	#uncomment after testing
+	#print(j)
+        with open('outputs/data.json', 'a') as f:
             json.dump(j, f, indent=2)
         
         
@@ -151,7 +152,7 @@ def parse_acess_log(fname):
         
         #uncomment after testing
         #print(j)
-        with open('outputs\data.json', 'a') as f:
+        with open('outputs/data.json', 'a') as f:
             json.dump(j, f, indent=2)             
         
         #the_datetime = datetime.datetime.fromtimestamp( epoch_time )  
@@ -199,7 +200,7 @@ def parse_error_log(fname):
         
             #uncomment after testing
             #print(j)
-            with open('outputs\data.json', 'a') as f:
+            with open('outputs/data.json', 'a') as f:
                 json.dump(j, f, indent=2)             
         except:
             pass
@@ -224,7 +225,7 @@ if __name__ == '__main__':
     #    print("Please provide the log file in the cmdline")
 
     # Parsinging teh audit log
-    parse_audit_log("samplelogs/audit_1640089505_merged.json")
+    parse_audit_log("samplelogs/audit_1639762173_merged.json")
 
     # #print("ACCESS LOG--->")
     # parse_acess_log("../logs/apache/rst1996/home/augumentedLogs/access.log")
@@ -234,10 +235,10 @@ if __name__ == '__main__':
     # parse_error_log("../logs/apache/testerror.log")
     
 
-    parse_error_log('samplelogs/access_1640089505.log')
+    parse_error_log('samplelogs/access_1639762173.log')
     # print('\n\n************Apache access log parsed\n\n')
 
-    parse_error_log('samplelogs/error_1640089505.log')
+    parse_error_log('samplelogs/error_1639762173.log')
     # print('\n\n************Apache access log parsed\n\n')
 
     # parse_error_log('mysql_logs/error_1633698258.log')
@@ -247,8 +248,8 @@ if __name__ == '__main__':
     # print('\n\n************MySQL query log parsed\n\n')
 
     
-    fin = open("outputs\data.json", "rt")
-    fout = open("outputs\data1.json", "wt")
+    fin = open("outputs/data.json", "rt")
+    fout = open("outputs/data1.json", "wt")
     
     for line in fin:
         fout.write(line.replace('}\n}{',"}\n},{").replace('}{', '},{'))

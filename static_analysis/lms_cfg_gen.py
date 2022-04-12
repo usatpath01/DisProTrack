@@ -783,7 +783,7 @@ if args.visualize:
         nt.show_buttons(filter_=['physics'])
         nt.repulsion(central_gravity=0)
         nt.from_nx(V)
-        nt.show('./outputs/lms_control_flow_graph.html')
+        nt.show('outputs/lms_control_flow_graph.html')
     except:
         pass
 ##################################################################################################
@@ -791,7 +791,7 @@ regex_graph,regex_loop_starting,regex_loop_ending = convert_graph_to_regex(final
 
 networkxx_graph = convert_to_networkx(regex_graph,regex_loop_starting,regex_loop_ending)
 json_converted = json_graph.node_link_data(networkxx_graph)
-with open("./outputs/graph.json","w") as outfile:
+with open("outputs/graph.json","w") as outfile:
   json.dump(json_converted,outfile,indent = 4)
 
 #print("Duration : %s seconds" % (time.time() - start_time))
@@ -800,7 +800,7 @@ with open("./outputs/graph.json","w") as outfile:
 #print(psutil.cpu_freq())
 
 ## Static Analysis Performance Stats logging
-with open("./outputs/time_resource_util.txt","a+") as logfile:
+with open("outputs/time_resource_util.txt","a+") as logfile:
   stats = "static analysis - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
   logfile.seek(0)
   data = logfile.read(100)
@@ -810,7 +810,7 @@ with open("./outputs/time_resource_util.txt","a+") as logfile:
   logfile.close()
 
 ## Additional Stats logging
-with open("./outputs/lms_gen_stats.txt","a+") as logfile:
+with open("outputs/lms_gen_stats.txt","a+") as logfile:
   stats = "LMSes: " + str(networkxx_graph.number_of_nodes()) + ", No. of Edges in LMS Control Flow Graph: " + str(networkxx_graph.number_of_edges()) + ", Num of Connected Components: " + str(getCCCount(networkxx_graph))
   logfile.write(stats)
   logfile.close()
