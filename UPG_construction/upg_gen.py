@@ -12,7 +12,10 @@ from pyvis.network import Network
 
 syscall_cnt = {}
 
-
+# To return number of connected component in a DiGraph
+def getCCCount(G):
+  return nx.number_connected_components(G.to_undirected())  
+  
 def load_graph(): #Function to load the graph from json file
   
 	f = open("outputs/graph.json",)
@@ -410,4 +413,10 @@ with open("outputs/time_resource_util.txt","a+") as logfile:
         logfile.write("\n")
     logfile.write(stats)
     logfile.close()
+
+# UPG Stats
+with open("outputs/upgStats.txt","a+") as statFile:
+	stats = "Nodes: " + str(net_graph.number_of_nodes()) + ", Edges: " + str(net_graph.number_of_edges()) + ", Num of Connected Components: " + str(getCCCount(net_graph))
+	statFile.write(stats)
+	statFile.close()
 
