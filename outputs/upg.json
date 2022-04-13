@@ -4,39 +4,39 @@
     "graph": {},
     "nodes": [
         {
-            "id": "[3247]/usr/bin/sed_37"
+            "id": "[3247]/usr/bin/sed_36"
+        },
+        {
+            "id": "36_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "[3246]/usr/bin/systemctl_37"
         },
         {
             "id": "37_/lib64/ld-linux-x86-64.so.2"
         },
         {
-            "id": "[3246]/usr/bin/systemctl_38"
-        },
-        {
-            "id": "38_/lib64/ld-linux-x86-64.so.2"
-        },
-        {
-            "id": "38_None:None"
+            "id": "37_None:None"
         }
     ],
     "links": [
         {
             "label": "execve(23237)",
             "ts": 1639762166872000000,
-            "source": "[3247]/usr/bin/sed_37",
-            "target": "37_/lib64/ld-linux-x86-64.so.2"
+            "source": "[3247]/usr/bin/sed_36",
+            "target": "36_/lib64/ld-linux-x86-64.so.2"
         },
         {
             "label": "execve(23245)",
             "ts": 1639762166872000000,
-            "source": "[3246]/usr/bin/systemctl_38",
-            "target": "38_/lib64/ld-linux-x86-64.so.2"
+            "source": "[3246]/usr/bin/systemctl_37",
+            "target": "37_/lib64/ld-linux-x86-64.so.2"
         },
         {
             "label": "connect(23287)",
             "ts": 1639762166876000000,
-            "source": "[3246]/usr/bin/systemctl_38",
-            "target": "38_None:None"
+            "source": "[3246]/usr/bin/systemctl_37",
+            "target": "37_None:None"
         }
     ]
 }
