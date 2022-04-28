@@ -171,7 +171,7 @@ Generates package-lock, sample_output and provenanceGraph.html as an output.
 
 # Complete Sequence
 ```bash
-	python3 static_analysis/lms_cfg_gen.py --exe binaries/apache2
+	python3 static_analysis/lms_cfg_gen.py --exe=binaries/apache2 --mb=3 > /dev/null 2>&1
 ```	
 ```bash
 	python3 ULF_generation/parsetojson.py samplelogs/audit_1640089505.log > samplelogs/audit_1640089505.json
