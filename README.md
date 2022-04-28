@@ -171,28 +171,30 @@ Generates package-lock, sample_output and provenanceGraph.html as an output.
 
 # Complete Sequence
 ```bash
-	cd static_analysis
-	python3 lms_cfg_gen.py --exe ../binaries/apache2
+	python3 static_analysis/lms_cfg_gen.py --exe binaries/apache2
 ```	
 ```bash
-	cd ULF_generation
-	python3 parsetojson.py samplelogs/audit_1640089505.log > audit_164.json
-	sort audit_164.json > audit_164s.json
-	python3 merge_json.py audit_164s.json > audit_164m.json
-	Open the ULF_gen.py in an editor and make the following changes : 
-		-> parse_audit_log("../../LOGS_0311/audit_ap2.json")    ---->(change with the line)----> parse_audit_log('./audit_164m.json')
-		-> parse_error_log('../../LOGS_0311/access_1640089505.log')   ---->(change with the line)---->  parse_error_log('../samplelogs/access_1640089505.log')
-		-> parse_error_log('../../LOGS_0311/error_1640089505.log')    ---->(change with the line)---->   parse_error_log('../samplelogs/error_1640089505.log')
-	python3 ULF_gen.py
-	python3 sort_ULF.py 	#this will generate an universal_log.json file
+	python3 ULF_generation/parsetojson.py samplelogs/audit_1640089505.log > samplelogs/audit_1640089505.json
+
+	sort samplelogs/audit_1640089505.json > samplelogs/audit_1640089505_sorted.json
+
+	python3 ULF_generation/merge_json.py samplelogs/audit_1640089505_sorted.json > samplelogs/audit_1640089505_merged.json
+
+	sudo nano ULF_generationULF_gen.py
+		-> parse_audit_log("samplelogs/audit_1640089505_merged.json")    --->(change with the line)--> parse_audit_log('samplelogs/audit_<LOG_FILE_NAME>.json')
+		-> parse_error_log('samplelogs/access_1640089505.log')   ---->(change with the line)---->  parse_error_log('samplelogs/access_<LOG_FILE_NAME>.log')
+		-> parse_error_log('samplelogs/error_1640089505.log')    ---->(change with the line)---->   parse_error_log('samplelogs/error_<LOG_FILE_NAME>.log')
+	
+	python3 ULF_generation/ULF_gen.py
+	python3 ULF_generation/sort_ULF.py 	#this will generate an universal_log.json file
 ```
 ```bash
-    cd ../UPG_construction
-	Open the upg_gen file in the text editor and make the following changes
-		-> f = open("graph.json",)  ---->(change with the line)----> f = open("../static_analysis/graph.json",)
-		-> f = open("universal_log.json",)  ---->(change with the line)----> f = open("../ULF_generation/universal_log.json",)
-	python3 upg_gen.py		
+	python3 UPG_construction/upg_gen.py
 ```
+```bash
+	rm outputs/data1.json outputs/data.json outputs/provenanceGraph.html outputs/upg.json outputs/universal_log.json outputs/aud_map.json outputs/partitioned_logs.json samplelogs/*.json
+```
+
 This will generate a provenanceGraph.html file which is the graph. It can be viewed in a browser.
 
 ## Appendix
