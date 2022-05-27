@@ -7,6 +7,13 @@ from operator import itemgetter
 from dateutil import parser
 import time
 import psutil
+import os
+
+def memory_usage_psutil():
+    # return the memory usage in MB
+    process = psutil.Process(os.getpid())
+    mem = process.memory_info()[0] / float(2 ** 20)
+    return mem
 
 start_time = time.time()
 
@@ -54,7 +61,7 @@ with open(r"outputs/universal_log.json", 'a') as f:
 print("------Sorting Completed and dumped to file-----")
 
 with open("outputs/time_resource_util.txt","a+") as logfile:
-    stats = "ULF_gen - sort_ulf - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
+    stats = "ULF_gen - sort_ulf - "+ ", Memory: " + str(memory_usage_psutil()) + ", Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
     logfile.seek(0)
     data = logfile.read(100)
     if len(data) > 0:

@@ -1,4 +1,4 @@
-bash experimentalscripts/getStat.sh > outputs/usageStatFile.txt&
+bash experimentalscripts/getStat.sh > outputs/usageStatFile_ulf.txt&
 FOO_PID=$!
-python3 static_analysis/lms_cfg_gen.py --exe=binaries/apache2 > /dev/null 2>&1
+python3 ULF_generation/ULF_gen.py > /dev/null 2>&1
 kill $FOO_PID

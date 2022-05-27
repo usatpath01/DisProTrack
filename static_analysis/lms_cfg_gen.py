@@ -1,7 +1,7 @@
 import pip
 import time
 import psutil
-
+import os
 def tryImport(packages):
 	''' If import error, then install the module '''
 	for package in packages:
@@ -25,9 +25,12 @@ from pyvis.network import Network
 import argparse
 parser = argparse.ArgumentParser(prog='python3 solve.py', usage='%(prog)s [options]')
 parser.add_argument('-V', dest='visualize', help='Use this flag for visualizing the graph',action="store_true")
+parser.add_argument('--mb',dest='mb', default=3, help = 'To set the value of maxbacktrace')
 parser.add_argument('--exe', dest='exe', nargs='+', default="./a.out", help='Provide the executable file location')
 parser.parse_args([])
 args = parser.parse_args()
+#print(args)
+#exit()
 ##################################################################################################
 start_time = time.time()
 proj = angr.Project(args.exe[0],load_options={'auto_load_libs':False})
@@ -762,11 +765,16 @@ def convert_to_networkx(graph,regex_loop_starting,regex_loop_ending):
 def getCCCount(G):
   return nx.number_connected_components(G.to_undirected())  
 
+def memory_usage_psutil():
+    # return the memory usage in MB
+    process = psutil.Process(os.getpid())
+    mem = process.memory_info()[0] / float(2 ** 20)
+    return mem
 
 cfg,check_func,not_check_func = log_functions() #Functions having log message strings
 # plot_cfg(cfg,"test_cfg", remove_imports=True, remove_path_terminator=True)
 req_func = extract_call_sites(cfg,check_func) #Get parent functions 
-req_strings = peephole(cfg,req_func,3) #Use peephole to find all log message strings
+req_strings = peephole(cfg,req_func,int(args.mb)) #Use peephole to find all log message strings
 find_loops(cfg, not_check_func) #Function to find starting and ending lms and syscall after ending lms or before starting lms
 build_lms_path(cfg,not_check_func) #Building LMS Graph for each function
 connect_subgraph(subgraph_dict,cfg) #Connect subgraphs with each other as mentioned
@@ -794,23 +802,28 @@ json_converted = json_graph.node_link_data(networkxx_graph)
 with open("outputs/graph.json","w") as outfile:
   json.dump(json_converted,outfile,indent = 4)
 
+
+tot_time = time.time() - start_time
 #print("Duration : %s seconds" % (time.time() - start_time))
 #print("CPU utilization as a percentage :", psutil.cpu_percent())
 #print(psutil.cpu_stats())
 #print(psutil.cpu_freq())
 
+
 ## Static Analysis Performance Stats logging
 with open("outputs/time_resource_util.txt","a+") as logfile:
-  stats = "static analysis - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
-  logfile.seek(0)
-  data = logfile.read(100)
-  if len(data) > 0:
-    logfile.write("\n")
+  stats = "static analysis - " + "Execution Time: " + str(tot_time) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq()) + "\n"
+  #logfile.seek(0)
+  #data = logfile.read(100)
+  #if len(data) > 0:
+  #  logfile.write("\n")
   logfile.write(stats)
   logfile.close()
 
 ## Additional Stats logging
 with open("outputs/lms_gen_stats.txt","a+") as logfile:
-  stats = "LMSes: " + str(networkxx_graph.number_of_nodes()) + ", No. of Edges in LMS Control Flow Graph: " + str(networkxx_graph.number_of_edges()) + ", Num of Connected Components: " + str(getCCCount(networkxx_graph))
+  stats = args.exe[0] + ", MB: " + str(args.mb) + ",Time:  " +  str(tot_time) + ", Memory: " + str(memory_usage_psutil())
+  stats += ", LMSes: " + str(networkxx_graph.number_of_nodes()) + ", No. of Edges in LMS Control Flow Graph: " + str(networkxx_graph.number_of_edges()) + ", Num of Connected Components: " + str(getCCCount(networkxx_graph))
+  stats += "\n"
   logfile.write(stats)
   logfile.close()

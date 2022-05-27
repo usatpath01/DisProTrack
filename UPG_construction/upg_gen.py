@@ -7,8 +7,24 @@ from re import search
 import pprint
 import time
 import psutil
-
+import sys
 from pyvis.network import Network
+import os
+
+if(len(sys.argv) > 1):
+	try:
+		LOOKAHEAD = int(sys.argv[1])
+	except:
+		LOOKAHEAD = 15
+else:
+	LOOKAHEAD = 15
+
+
+def memory_usage_psutil():
+    # return the memory usage in MB
+    process = psutil.Process(os.getpid())
+    mem = process.memory_info()[0] / float(2 ** 20)
+    return mem
 
 syscall_cnt = {}
 
@@ -79,8 +95,9 @@ def calculate_rank(string): #Function to find the rank of regex_lms
     return total_words-cnt
 
 def match_lms(lms_cand, lms_graph, lms_state, eventUnit, data):
-	start_time_ml = time.time()
-	lvl = 15 #lookahead level
+	global st_ml
+	st_ml = time.time()
+	lvl = LOOKAHEAD #lookahead level
 	final_regex_node = None #if the node having lms is found
 	candidates_lms = []
 	for dis in range(1,lvl): #iterate for all levels from 1 to lvl
@@ -131,18 +148,8 @@ def match_lms(lms_cand, lms_graph, lms_state, eventUnit, data):
 			return final_regex_node,0
 	# return final_regex_node
 
-	with open("outputs/time_resource_util.txt","a+") as logfile:
-		stats = "upg_gen - match_lms " + "Execution Time: " + str((time.time() - start_time_ml)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
-		logfile.seek(0)
-		data = logfile.read(100)
-		if len(data) > 0:
-			logfile.write("\n")
-		logfile.write(stats)
-		logfile.close()
-
 #Function to do the exhaustive search to find all the node containing lms
 def get_lms_regex(event,G):
-	start_time_glr = time.time()
 	candidates_lms = []
 	for node in G.nodes:
 		regex_lms = G.nodes[node]["lms"]
@@ -160,14 +167,6 @@ def get_lms_regex(event,G):
 			mx = temp_cmp
 			final_regex_node = node
 	return final_regex_node
-	with open("outputs/time_resource_util.txt","a+") as logfile:
-		stats = "upg_gen - get_lms_regex " + "Execution Time: " + str((time.time() - start_time_glr)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
-		logfile.seek(0)
-		data = logfile.read(100)
-		if len(data) > 0:
-			logfile.write("\n")
-		logfile.write(stats)
-		logfile.close()	
 
 start_time = time.time()
 data = load_log()
@@ -201,6 +200,8 @@ for i in range(0,logs_range):
 				end_unit = 1
 		else:
 			temp,end_unit = match_lms(lms_cand, lms_graph, lms_state, eventUnit, data[i]) #else use their neighbours to find the lms node
+			global et_ml
+			et_ml = time.time()
 			#uncomment after testing
 			#print(i, " : LOG : ", data[i]["lms"], " || Next Candidate: ", temp, " EndUnit ", end_unit)
 			if temp!=None:
@@ -406,17 +407,26 @@ nt.repulsion(central_gravity=0)
 nt.show('outputs/provenanceGraph.html')
 
 with open("outputs/time_resource_util.txt","a+") as logfile:
-    stats = "upg_gen - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
-    logfile.seek(0)
-    data = logfile.read(100)
-    if len(data) > 0:
-        logfile.write("\n")
+    stats = "upg_gen - match_lms"+ ", Memory: " + str(memory_usage_psutil())  + ", Execution Time: " + str(et_ml - st_ml) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq()) + "\n"
+    # logfile.seek(0)
+    # data = logfile.read(100)
+    # if len(data) > 0:
+    #     logfile.write("\n")
+    logfile.write(stats)
+    logfile.close()
+
+with open("outputs/time_resource_util.txt","a+") as logfile:
+    stats = "upg_gen - "+ ", Memory: " + str(memory_usage_psutil())  + ", Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq()) + "\n"
+    # logfile.seek(0)
+    # data = logfile.read(100)
+    # if len(data) > 0:
+    #     logfile.write("\n")
     logfile.write(stats)
     logfile.close()
 
 # UPG Stats
 with open("outputs/upgStats.txt","a+") as statFile:
-	stats = "Nodes: " + str(net_graph.number_of_nodes()) + ", Edges: " + str(net_graph.number_of_edges()) + ", Num of Connected Components: " + str(getCCCount(net_graph))
+	stats = "Nodes: " + str(net_graph.number_of_nodes()) + ", Edges: " + str(net_graph.number_of_edges()) + ", Num of Connected Components: " + str(getCCCount(net_graph)) + "\n"
 	statFile.write(stats)
 	statFile.close()
 

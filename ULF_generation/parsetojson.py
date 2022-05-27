@@ -4,6 +4,13 @@ import re
 import sys
 import time
 import psutil
+import os
+
+def memory_usage_psutil():
+    # return the memory usage in MB
+    process = psutil.Process(os.getpid())
+    mem = process.memory_info()[0] / float(2 ** 20)
+    return mem
 
 def parse_kv_pairs(text, item_sep=" ", value_sep="="):
     lexer = shlex(text, posix=True)
@@ -72,11 +79,11 @@ if __name__ == '__main__':
         print("Please provide the log file in the cmdline")
 
 with open("outputs/time_resource_util.txt","a+") as logfile:
-	stats = "ULF_gen - parse_to_json - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
-	logfile.seek(0)
-	data = logfile.read(100)
-	if len(data) > 0:
-		logfile.write("\n")
+	stats = "ULF_gen - parse_to_json - "+ ", Memory: " + str(memory_usage_psutil()) + ", Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq()) + "\n"
+	# logfile.seek(0)
+	# data = logfile.read(100)
+	# if len(data) > 0:
+	# 	logfile.write("\n")
 	logfile.write(stats)
 	logfile.close()
     # parse2("aduitdemo.txt")

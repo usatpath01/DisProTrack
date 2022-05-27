@@ -17,7 +17,7 @@ from pyvis.network import Network
 from queue import LifoQueue
 import argparse
 
-f = open('./UPG_construction/upg.json','r')                                             #opening the upg.json file(node-link data format)
+f = open('outputs_s3_1640089505/upg.json','r')                                             #opening the upg.json file(node-link data format)
 json_data = json.loads(f.read())                                                        #reading the json data
 H = json_graph.node_link_graph(json_data,directed=True,attrs=None)                      #returns a graph from node-link data format (H is a network graph object)
 labels = nx.get_edge_attributes(H,'label')                                              #returns all the edge labels in the parent graph
@@ -84,7 +84,7 @@ def main():
     parser.add_argument('-S','--subg',help='Specify cause')
     parser.add_argument('-G','--viewg',help='View UPG')
     args = parser.parse_args()
-    with open("./UPG_construction/aud_map.json") as json_file:
+    with open("outputs_s3_1640089505/aud_map.json") as json_file:
         data = json.load(json_file)
     if args.back in data:
         name = data[args.back]

@@ -13,6 +13,15 @@ import datetime
 from datetime import datetime
 import time
 import psutil
+import os
+
+def memory_usage_psutil():
+    # return the memory usage in MB
+    process = psutil.Process(os.getpid())
+    mem = process.memory_info()[0] / float(2 ** 20)
+    return mem
+
+    
 #from pandas import json_normalize
 #import sort_log_files
 
@@ -225,7 +234,7 @@ if __name__ == '__main__':
     #    print("Please provide the log file in the cmdline")
 
     # Parsinging teh audit log
-    parse_audit_log("samplelogs/audit_1639762173_merged.json")
+    parse_audit_log("samplelogs/audit_1640089505_merged.json")
 
     # #print("ACCESS LOG--->")
     # parse_acess_log("../logs/apache/rst1996/home/augumentedLogs/access.log")
@@ -235,10 +244,10 @@ if __name__ == '__main__':
     # parse_error_log("../logs/apache/testerror.log")
     
 
-    parse_error_log('samplelogs/access_1639762173.log')
+    parse_error_log('samplelogs/access_1640089505.log')
     # print('\n\n************Apache access log parsed\n\n')
 
-    parse_error_log('samplelogs/error_1639762173.log')
+    parse_error_log('samplelogs/error_1640089505.log')
     # print('\n\n************Apache access log parsed\n\n')
 
     # parse_error_log('mysql_logs/error_1633698258.log')
@@ -260,10 +269,10 @@ if __name__ == '__main__':
     #exec(open('sort_log_files.py').read())
     ## ULF Generation Performance Stats logging
     with open("outputs/time_resource_util.txt","a+") as logfile:
-        stats = "ULF_gen - " + "Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq())
-        logfile.seek(0)
-        data = logfile.read(100)
-        if len(data) > 0:
-            logfile.write("\n")
+        stats = "ULF_gen - "+ ", Memory: " + str(memory_usage_psutil()) + ", Execution Time: " + str((time.time() - start_time)) + ", CPU utilization as a % " + str(psutil.cpu_percent()) + ", CPU Stats" + str(psutil.cpu_stats()) + ", CPU Frequency" + str(psutil.cpu_freq()) + "\n"
+        # logfile.seek(0)
+        # data = logfile.read(100)
+        # if len(data) > 0:
+        #     logfile.write("\n")
         logfile.write(stats)
         logfile.close()
