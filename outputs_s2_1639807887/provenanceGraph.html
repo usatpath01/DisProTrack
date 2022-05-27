@@ -1,0 +1,131 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1200px;
+            height: 1800px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "11_::ffff:127.0.0.1 48240", "label": "11_::ffff:127.0.0.1 48240", "shape": "dot", "size": 10}, {"id": "[3590]/usr/sbin/apache2_11", "label": "[3590]/usr/sbin/apache2_11", "shape": "dot", "size": 10}, {"id": "12_::ffff:127.0.0.1 48244", "label": "12_::ffff:127.0.0.1 48244", "shape": "dot", "size": 10}, {"id": "[3588]/usr/sbin/apache2_12", "label": "[3588]/usr/sbin/apache2_12", "shape": "dot", "size": 10}, {"id": "13_::ffff:127.0.0.1 48246", "label": "13_::ffff:127.0.0.1 48246", "shape": "dot", "size": 10}, {"id": "[3591]/usr/sbin/apache2_13", "label": "[3591]/usr/sbin/apache2_13", "shape": "dot", "size": 10}, {"id": "14_::ffff:127.0.0.1 48248", "label": "14_::ffff:127.0.0.1 48248", "shape": "dot", "size": 10}, {"id": "[3589]/usr/sbin/apache2_14", "label": "[3589]/usr/sbin/apache2_14", "shape": "dot", "size": 10}, {"id": "[3958]/usr/sbin/apache2_24", "label": "[3958]/usr/sbin/apache2_24", "shape": "dot", "size": 10}, {"id": "24_None:None", "label": "24_None:None", "shape": "dot", "size": 10}, {"id": "24_::ffff:127.0.0.1 48254", "label": "24_::ffff:127.0.0.1 48254", "shape": "dot", "size": 10}, {"id": "[3591]/usr/sbin/apache2_32", "label": "[3591]/usr/sbin/apache2_32", "shape": "dot", "size": 10}, {"id": "32_None", "label": "32_None", "shape": "dot", "size": 10}, {"id": "39_::ffff:127.0.0.1 48250", "label": "39_::ffff:127.0.0.1 48250", "shape": "dot", "size": 10}, {"id": "[3587]/usr/sbin/apache2_39", "label": "[3587]/usr/sbin/apache2_39", "shape": "dot", "size": 10}, {"id": "43_::ffff:127.0.0.1 48252", "label": "43_::ffff:127.0.0.1 48252", "shape": "dot", "size": 10}, {"id": "[3590]/usr/sbin/apache2_43", "label": "[3590]/usr/sbin/apache2_43", "shape": "dot", "size": 10}, {"id": "[3600]/usr/lib/firefox/firefox_56", "label": "[3600]/usr/lib/firefox/firefox_56", "shape": "dot", "size": 10}, {"id": "56_None", "label": "56_None", "shape": "dot", "size": 10}, {"id": "56_None:None", "label": "56_None:None", "shape": "dot", "size": 10}, {"id": "56_127.0.0.53:53", "label": "56_127.0.0.53:53", "shape": "dot", "size": 10}, {"id": "56_199.232.253.111:0", "label": "56_199.232.253.111:0", "shape": "dot", "size": 10}, {"id": "56_13.227.138.20:0", "label": "56_13.227.138.20:0", "shape": "dot", "size": 10}, {"id": "56_13.227.138.59:0", "label": "56_13.227.138.59:0", "shape": "dot", "size": 10}, {"id": "56_13.227.138.66:0", "label": "56_13.227.138.66:0", "shape": "dot", "size": 10}, {"id": "56_13.227.138.18:0", "label": "56_13.227.138.18:0", "shape": "dot", "size": 10}, {"id": "56_104.109.0.51:0", "label": "56_104.109.0.51:0", "shape": "dot", "size": 10}, {"id": "56_169.229.216.14:0", "label": "56_169.229.216.14:0", "shape": "dot", "size": 10}, {"id": "56_104.108.158.200:0", "label": "56_104.108.158.200:0", "shape": "dot", "size": 10}, {"id": "56_23.185.0.2:0", "label": "56_23.185.0.2:0", "shape": "dot", "size": 10}, {"id": "56_23.185.0.1:0", "label": "56_23.185.0.1:0", "shape": "dot", "size": 10}, {"id": "56_13.227.138.115:0", "label": "56_13.227.138.115:0", "shape": "dot", "size": 10}, {"id": "56_13.227.138.46:0", "label": "56_13.227.138.46:0", "shape": "dot", "size": 10}, {"id": "56_13.227.138.116:0", "label": "56_13.227.138.116:0", "shape": "dot", "size": 10}, {"id": "56_13.227.138.119:0", "label": "56_13.227.138.119:0", "shape": "dot", "size": 10}, {"id": "56_172.67.22.130:0", "label": "56_172.67.22.130:0", "shape": "dot", "size": 10}, {"id": "56_104.22.3.106:0", "label": "56_104.22.3.106:0", "shape": "dot", "size": 10}, {"id": "56_104.22.2.106:0", "label": "56_104.22.2.106:0", "shape": "dot", "size": 10}, {"id": "56_151.101.128.239:0", "label": "56_151.101.128.239:0", "shape": "dot", "size": 10}, {"id": "56_151.101.192.239:0", "label": "56_151.101.192.239:0", "shape": "dot", "size": 10}, {"id": "56_151.101.64.239:0", "label": "56_151.101.64.239:0", "shape": "dot", "size": 10}, {"id": "56_151.101.0.239:0", "label": "56_151.101.0.239:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.128:0", "label": "56_54.182.0.128:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.13:0", "label": "56_54.182.0.13:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.94:0", "label": "56_54.182.0.94:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.29:0", "label": "56_54.182.0.29:0", "shape": "dot", "size": 10}, {"id": "56_142.250.76.197:0", "label": "56_142.250.76.197:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.107:0", "label": "56_54.182.0.107:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.69:0", "label": "56_54.182.0.69:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.89:0", "label": "56_54.182.0.89:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.124:0", "label": "56_54.182.0.124:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.64:0", "label": "56_54.182.0.64:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.6:0", "label": "56_54.182.0.6:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.43:0", "label": "56_54.182.0.43:0", "shape": "dot", "size": 10}, {"id": "56_54.182.0.40:0", "label": "56_54.182.0.40:0", "shape": "dot", "size": 10}, {"id": "56_13.227.141.156:0", "label": "56_13.227.141.156:0", "shape": "dot", "size": 10}, {"id": "56_13.227.141.126:0", "label": "56_13.227.141.126:0", "shape": "dot", "size": 10}, {"id": "56_13.227.141.37:0", "label": "56_13.227.141.37:0", "shape": "dot", "size": 10}, {"id": "56_13.227.141.180:0", "label": "56_13.227.141.180:0", "shape": "dot", "size": 10}, {"id": "56_34.107.221.82:0", "label": "56_34.107.221.82:0", "shape": "dot", "size": 10}, {"id": "56_192.0.0.171:0", "label": "56_192.0.0.171:0", "shape": "dot", "size": 10}, {"id": "56_192.0.0.170:0", "label": "56_192.0.0.170:0", "shape": "dot", "size": 10}, {"id": "56_142.250.182.196:0", "label": "56_142.250.182.196:0", "shape": "dot", "size": 10}, {"id": "61_::ffff:127.0.0.1 48256", "label": "61_::ffff:127.0.0.1 48256", "shape": "dot", "size": 10}, {"id": "[3588]/usr/sbin/apache2_61", "label": "[3588]/usr/sbin/apache2_61", "shape": "dot", "size": 10}, {"id": "[3979]/usr/lib/firefox/firefox_67", "label": "[3979]/usr/lib/firefox/firefox_67", "shape": "dot", "size": 10}, {"id": "67_/lib64/ld-linux-x86-64.so.2", "label": "67_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "67_None:None", "label": "67_None:None", "shape": "dot", "size": 10}, {"id": "69_None None", "label": "69_None None", "shape": "dot", "size": 10}, {"id": "[698]/usr/bin/dbus-daemon_69", "label": "[698]/usr/bin/dbus-daemon_69", "shape": "dot", "size": 10}, {"id": "[4015]/usr/bin/sudo_85", "label": "[4015]/usr/bin/sudo_85", "shape": "dot", "size": 10}, {"id": "85_/lib64/ld-linux-x86-64.so.2", "label": "85_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "85_None:None", "label": "85_None:None", "shape": "dot", "size": 10}, {"id": "[4016]/usr/bin/bash_86", "label": "[4016]/usr/bin/bash_86", "shape": "dot", "size": 10}, {"id": "86_/lib64/ld-linux-x86-64.so.2", "label": "86_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "[4017]/usr/bin/dash_87", "label": "[4017]/usr/bin/dash_87", "shape": "dot", "size": 10}, {"id": "87_/lib64/ld-linux-x86-64.so.2", "label": "87_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "[4018]/usr/bin/basename_88", "label": "[4018]/usr/bin/basename_88", "shape": "dot", "size": 10}, {"id": "88_/lib64/ld-linux-x86-64.so.2", "label": "88_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "[4019]/usr/bin/basename_89", "label": "[4019]/usr/bin/basename_89", "shape": "dot", "size": 10}, {"id": "89_/lib64/ld-linux-x86-64.so.2", "label": "89_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "[4020]/usr/bin/systemctl_90", "label": "[4020]/usr/bin/systemctl_90", "shape": "dot", "size": 10}, {"id": "90_/lib64/ld-linux-x86-64.so.2", "label": "90_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "90_None:None", "label": "90_None:None", "shape": "dot", "size": 10}, {"id": "[4023]/usr/bin/sed_92", "label": "[4023]/usr/bin/sed_92", "shape": "dot", "size": 10}, {"id": "92_/lib64/ld-linux-x86-64.so.2", "label": "92_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "[4022]/usr/bin/systemctl_93", "label": "[4022]/usr/bin/systemctl_93", "shape": "dot", "size": 10}, {"id": "93_/lib64/ld-linux-x86-64.so.2", "label": "93_/lib64/ld-linux-x86-64.so.2", "shape": "dot", "size": 10}, {"id": "93_None:None", "label": "93_None:None", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "11_::ffff:127.0.0.1 48240", "label": "accept4(23445)", "to": "[3590]/usr/sbin/apache2_11", "ts": 1639807763252999936, "weight": 1}, {"arrows": "to", "from": "12_::ffff:127.0.0.1 48244", "label": "accept4(23550)", "to": "[3588]/usr/sbin/apache2_12", "ts": 1639807763252999936, "weight": 1}, {"arrows": "to", "from": "13_::ffff:127.0.0.1 48246", "label": "accept4(23863)", "to": "[3591]/usr/sbin/apache2_13", "ts": 1639807763252999936, "weight": 1}, {"arrows": "to", "from": "14_::ffff:127.0.0.1 48248", "label": "accept4(24251)", "to": "[3589]/usr/sbin/apache2_14", "ts": 1639807763256999936, "weight": 1}, {"arrows": "to", "from": "[3958]/usr/sbin/apache2_24", "label": "connect(23643)", "to": "24_None:None", "ts": 1639807818602999808, "weight": 1}, {"arrows": "to", "from": "24_::ffff:127.0.0.1 48254", "label": "accept4(26314)", "to": "[3958]/usr/sbin/apache2_24", "ts": 1639807818602999808, "weight": 1}, {"arrows": "to", "from": "[3591]/usr/sbin/apache2_32", "label": "unlink(23929)", "to": "32_None", "ts": 1639807829046999808, "weight": 1}, {"arrows": "to", "from": "39_::ffff:127.0.0.1 48250", "label": "accept4(24260)", "to": "[3587]/usr/sbin/apache2_39", "ts": 1639807804094000128, "weight": 1}, {"arrows": "to", "from": "43_::ffff:127.0.0.1 48252", "label": "accept4(26110)", "to": "[3590]/usr/sbin/apache2_43", "ts": 1639807813130000128, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "unlink(26318)", "to": "56_None", "ts": 1639807859792999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26424)", "to": "56_None:None", "ts": 1639807862816999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26422)", "to": "56_127.0.0.53:53", "ts": 1639807862796999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26082)", "to": "56_199.232.253.111:0", "ts": 1639807847516999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26215)", "to": "56_13.227.138.20:0", "ts": 1639807851584999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26221)", "to": "56_13.227.138.59:0", "ts": 1639807851584999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26217)", "to": "56_13.227.138.66:0", "ts": 1639807851584999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26219)", "to": "56_13.227.138.18:0", "ts": 1639807851584999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(23481)", "to": "56_104.109.0.51:0", "ts": 1639807814818000128, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(23532)", "to": "56_169.229.216.14:0", "ts": 1639807816787000064, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(23538)", "to": "56_104.108.158.200:0", "ts": 1639807816851000064, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(23662)", "to": "56_23.185.0.2:0", "ts": 1639807818811000064, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24075)", "to": "56_23.185.0.1:0", "ts": 1639807833328000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(25914)", "to": "56_13.227.138.115:0", "ts": 1639807845508000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(25916)", "to": "56_13.227.138.46:0", "ts": 1639807845508000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(25918)", "to": "56_13.227.138.116:0", "ts": 1639807845508000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(25920)", "to": "56_13.227.138.119:0", "ts": 1639807845508000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26071)", "to": "56_172.67.22.130:0", "ts": 1639807847496999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26073)", "to": "56_104.22.3.106:0", "ts": 1639807847496999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26075)", "to": "56_104.22.2.106:0", "ts": 1639807847500999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26170)", "to": "56_151.101.128.239:0", "ts": 1639807849532999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26172)", "to": "56_151.101.192.239:0", "ts": 1639807849532999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26174)", "to": "56_151.101.64.239:0", "ts": 1639807849532999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26176)", "to": "56_151.101.0.239:0", "ts": 1639807849532999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26185)", "to": "56_54.182.0.128:0", "ts": 1639807849552999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26183)", "to": "56_54.182.0.13:0", "ts": 1639807849552999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26181)", "to": "56_54.182.0.94:0", "ts": 1639807849552999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26179)", "to": "56_54.182.0.29:0", "ts": 1639807849548999936, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24067)", "to": "56_142.250.76.197:0", "ts": 1639807833324000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24088)", "to": "56_54.182.0.107:0", "ts": 1639807833348000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24093)", "to": "56_54.182.0.69:0", "ts": 1639807833348000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24095)", "to": "56_54.182.0.89:0", "ts": 1639807833348000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24097)", "to": "56_54.182.0.124:0", "ts": 1639807833348000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24108)", "to": "56_54.182.0.64:0", "ts": 1639807833372000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24110)", "to": "56_54.182.0.6:0", "ts": 1639807833376000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24112)", "to": "56_54.182.0.43:0", "ts": 1639807833376000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24114)", "to": "56_54.182.0.40:0", "ts": 1639807833376000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24157)", "to": "56_13.227.141.156:0", "ts": 1639807836320000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24159)", "to": "56_13.227.141.126:0", "ts": 1639807836320000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24161)", "to": "56_13.227.141.37:0", "ts": 1639807836320000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(24163)", "to": "56_13.227.141.180:0", "ts": 1639807836320000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(25956)", "to": "56_34.107.221.82:0", "ts": 1639807845612000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(25971)", "to": "56_192.0.0.171:0", "ts": 1639807845644000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(25973)", "to": "56_192.0.0.170:0", "ts": 1639807845644000000, "weight": 1}, {"arrows": "to", "from": "[3600]/usr/lib/firefox/firefox_56", "label": "connect(26425)", "to": "56_142.250.182.196:0", "ts": 1639807862816999936, "weight": 1}, {"arrows": "to", "from": "61_::ffff:127.0.0.1 48256", "label": "accept4(26580)", "to": "[3588]/usr/sbin/apache2_61", "ts": 1639807822723000064, "weight": 1}, {"arrows": "to", "from": "[3979]/usr/lib/firefox/firefox_67", "label": "execve(24749)", "to": "67_/lib64/ld-linux-x86-64.so.2", "ts": 1639807844332000000, "weight": 1}, {"arrows": "to", "from": "[3979]/usr/lib/firefox/firefox_67", "label": "connect(24967)", "to": "67_None:None", "ts": 1639807844384000000, "weight": 1}, {"arrows": "to", "from": "69_None None", "label": "accept4(24966)", "to": "[698]/usr/bin/dbus-daemon_69", "ts": 1639807844384000000, "weight": 1}, {"arrows": "to", "from": "[4015]/usr/bin/sudo_85", "label": "execve(26773)", "to": "85_/lib64/ld-linux-x86-64.so.2", "ts": 1639807881278000128, "weight": 1}, {"arrows": "to", "from": "[4015]/usr/bin/sudo_85", "label": "connect(26975)", "to": "85_None:None", "ts": 1639807881282000128, "weight": 1}, {"arrows": "to", "from": "[4016]/usr/bin/bash_86", "label": "execve(26989)", "to": "86_/lib64/ld-linux-x86-64.so.2", "ts": 1639807881286000128, "weight": 1}, {"arrows": "to", "from": "[4017]/usr/bin/dash_87", "label": "execve(27010)", "to": "87_/lib64/ld-linux-x86-64.so.2", "ts": 1639807881286000128, "weight": 1}, {"arrows": "to", "from": "[4018]/usr/bin/basename_88", "label": "execve(27023)", "to": "88_/lib64/ld-linux-x86-64.so.2", "ts": 1639807881289999872, "weight": 1}, {"arrows": "to", "from": "[4019]/usr/bin/basename_89", "label": "execve(27039)", "to": "89_/lib64/ld-linux-x86-64.so.2", "ts": 1639807881289999872, "weight": 1}, {"arrows": "to", "from": "[4020]/usr/bin/systemctl_90", "label": "execve(27051)", "to": "90_/lib64/ld-linux-x86-64.so.2", "ts": 1639807881289999872, "weight": 1}, {"arrows": "to", "from": "[4020]/usr/bin/systemctl_90", "label": "connect(27080)", "to": "90_None:None", "ts": 1639807881293999872, "weight": 1}, {"arrows": "to", "from": "[4023]/usr/bin/sed_92", "label": "execve(27101)", "to": "92_/lib64/ld-linux-x86-64.so.2", "ts": 1639807881298000128, "weight": 1}, {"arrows": "to", "from": "[4022]/usr/bin/systemctl_93", "label": "execve(27102)", "to": "93_/lib64/ld-linux-x86-64.so.2", "ts": 1639807881298000128, "weight": 1}, {"arrows": "to", "from": "[4022]/usr/bin/systemctl_93", "label": "connect(27151)", "to": "93_None:None", "ts": 1639807881298000128, "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0,
+            "damping": 0.09,
+            "nodeDistance": 100,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

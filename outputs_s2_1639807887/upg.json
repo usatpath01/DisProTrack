@@ -1,0 +1,690 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "id": "11_::ffff:127.0.0.1 48240"
+        },
+        {
+            "id": "[3590]/usr/sbin/apache2_11"
+        },
+        {
+            "id": "12_::ffff:127.0.0.1 48244"
+        },
+        {
+            "id": "[3588]/usr/sbin/apache2_12"
+        },
+        {
+            "id": "13_::ffff:127.0.0.1 48246"
+        },
+        {
+            "id": "[3591]/usr/sbin/apache2_13"
+        },
+        {
+            "id": "14_::ffff:127.0.0.1 48248"
+        },
+        {
+            "id": "[3589]/usr/sbin/apache2_14"
+        },
+        {
+            "id": "[3958]/usr/sbin/apache2_24"
+        },
+        {
+            "id": "24_None:None"
+        },
+        {
+            "id": "24_::ffff:127.0.0.1 48254"
+        },
+        {
+            "id": "[3591]/usr/sbin/apache2_32"
+        },
+        {
+            "id": "32_None"
+        },
+        {
+            "id": "39_::ffff:127.0.0.1 48250"
+        },
+        {
+            "id": "[3587]/usr/sbin/apache2_39"
+        },
+        {
+            "id": "43_::ffff:127.0.0.1 48252"
+        },
+        {
+            "id": "[3590]/usr/sbin/apache2_43"
+        },
+        {
+            "id": "[3600]/usr/lib/firefox/firefox_56"
+        },
+        {
+            "id": "56_None"
+        },
+        {
+            "id": "56_None:None"
+        },
+        {
+            "id": "56_127.0.0.53:53"
+        },
+        {
+            "id": "56_199.232.253.111:0"
+        },
+        {
+            "id": "56_13.227.138.20:0"
+        },
+        {
+            "id": "56_13.227.138.59:0"
+        },
+        {
+            "id": "56_13.227.138.66:0"
+        },
+        {
+            "id": "56_13.227.138.18:0"
+        },
+        {
+            "id": "56_104.109.0.51:0"
+        },
+        {
+            "id": "56_169.229.216.14:0"
+        },
+        {
+            "id": "56_104.108.158.200:0"
+        },
+        {
+            "id": "56_23.185.0.2:0"
+        },
+        {
+            "id": "56_23.185.0.1:0"
+        },
+        {
+            "id": "56_13.227.138.115:0"
+        },
+        {
+            "id": "56_13.227.138.46:0"
+        },
+        {
+            "id": "56_13.227.138.116:0"
+        },
+        {
+            "id": "56_13.227.138.119:0"
+        },
+        {
+            "id": "56_172.67.22.130:0"
+        },
+        {
+            "id": "56_104.22.3.106:0"
+        },
+        {
+            "id": "56_104.22.2.106:0"
+        },
+        {
+            "id": "56_151.101.128.239:0"
+        },
+        {
+            "id": "56_151.101.192.239:0"
+        },
+        {
+            "id": "56_151.101.64.239:0"
+        },
+        {
+            "id": "56_151.101.0.239:0"
+        },
+        {
+            "id": "56_54.182.0.128:0"
+        },
+        {
+            "id": "56_54.182.0.13:0"
+        },
+        {
+            "id": "56_54.182.0.94:0"
+        },
+        {
+            "id": "56_54.182.0.29:0"
+        },
+        {
+            "id": "56_142.250.76.197:0"
+        },
+        {
+            "id": "56_54.182.0.107:0"
+        },
+        {
+            "id": "56_54.182.0.69:0"
+        },
+        {
+            "id": "56_54.182.0.89:0"
+        },
+        {
+            "id": "56_54.182.0.124:0"
+        },
+        {
+            "id": "56_54.182.0.64:0"
+        },
+        {
+            "id": "56_54.182.0.6:0"
+        },
+        {
+            "id": "56_54.182.0.43:0"
+        },
+        {
+            "id": "56_54.182.0.40:0"
+        },
+        {
+            "id": "56_13.227.141.156:0"
+        },
+        {
+            "id": "56_13.227.141.126:0"
+        },
+        {
+            "id": "56_13.227.141.37:0"
+        },
+        {
+            "id": "56_13.227.141.180:0"
+        },
+        {
+            "id": "56_34.107.221.82:0"
+        },
+        {
+            "id": "56_192.0.0.171:0"
+        },
+        {
+            "id": "56_192.0.0.170:0"
+        },
+        {
+            "id": "56_142.250.182.196:0"
+        },
+        {
+            "id": "61_::ffff:127.0.0.1 48256"
+        },
+        {
+            "id": "[3588]/usr/sbin/apache2_61"
+        },
+        {
+            "id": "[3979]/usr/lib/firefox/firefox_67"
+        },
+        {
+            "id": "67_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "67_None:None"
+        },
+        {
+            "id": "69_None None"
+        },
+        {
+            "id": "[698]/usr/bin/dbus-daemon_69"
+        },
+        {
+            "id": "[4015]/usr/bin/sudo_85"
+        },
+        {
+            "id": "85_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "85_None:None"
+        },
+        {
+            "id": "[4016]/usr/bin/bash_86"
+        },
+        {
+            "id": "86_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "[4017]/usr/bin/dash_87"
+        },
+        {
+            "id": "87_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "[4018]/usr/bin/basename_88"
+        },
+        {
+            "id": "88_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "[4019]/usr/bin/basename_89"
+        },
+        {
+            "id": "89_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "[4020]/usr/bin/systemctl_90"
+        },
+        {
+            "id": "90_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "90_None:None"
+        },
+        {
+            "id": "[4023]/usr/bin/sed_92"
+        },
+        {
+            "id": "92_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "[4022]/usr/bin/systemctl_93"
+        },
+        {
+            "id": "93_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "93_None:None"
+        }
+    ],
+    "links": [
+        {
+            "label": "accept4(23445)",
+            "ts": 1639807763252999936,
+            "source": "11_::ffff:127.0.0.1 48240",
+            "target": "[3590]/usr/sbin/apache2_11"
+        },
+        {
+            "label": "accept4(23550)",
+            "ts": 1639807763252999936,
+            "source": "12_::ffff:127.0.0.1 48244",
+            "target": "[3588]/usr/sbin/apache2_12"
+        },
+        {
+            "label": "accept4(23863)",
+            "ts": 1639807763252999936,
+            "source": "13_::ffff:127.0.0.1 48246",
+            "target": "[3591]/usr/sbin/apache2_13"
+        },
+        {
+            "label": "accept4(24251)",
+            "ts": 1639807763256999936,
+            "source": "14_::ffff:127.0.0.1 48248",
+            "target": "[3589]/usr/sbin/apache2_14"
+        },
+        {
+            "label": "connect(23643)",
+            "ts": 1639807818602999808,
+            "source": "[3958]/usr/sbin/apache2_24",
+            "target": "24_None:None"
+        },
+        {
+            "label": "accept4(26314)",
+            "ts": 1639807818602999808,
+            "source": "24_::ffff:127.0.0.1 48254",
+            "target": "[3958]/usr/sbin/apache2_24"
+        },
+        {
+            "label": "unlink(23929)",
+            "ts": 1639807829046999808,
+            "source": "[3591]/usr/sbin/apache2_32",
+            "target": "32_None"
+        },
+        {
+            "label": "accept4(24260)",
+            "ts": 1639807804094000128,
+            "source": "39_::ffff:127.0.0.1 48250",
+            "target": "[3587]/usr/sbin/apache2_39"
+        },
+        {
+            "label": "accept4(26110)",
+            "ts": 1639807813130000128,
+            "source": "43_::ffff:127.0.0.1 48252",
+            "target": "[3590]/usr/sbin/apache2_43"
+        },
+        {
+            "label": "unlink(26318)",
+            "ts": 1639807859792999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_None"
+        },
+        {
+            "label": "connect(26424)",
+            "ts": 1639807862816999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_None:None"
+        },
+        {
+            "label": "connect(26422)",
+            "ts": 1639807862796999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_127.0.0.53:53"
+        },
+        {
+            "label": "connect(26082)",
+            "ts": 1639807847516999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_199.232.253.111:0"
+        },
+        {
+            "label": "connect(26215)",
+            "ts": 1639807851584999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.138.20:0"
+        },
+        {
+            "label": "connect(26221)",
+            "ts": 1639807851584999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.138.59:0"
+        },
+        {
+            "label": "connect(26217)",
+            "ts": 1639807851584999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.138.66:0"
+        },
+        {
+            "label": "connect(26219)",
+            "ts": 1639807851584999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.138.18:0"
+        },
+        {
+            "label": "connect(23481)",
+            "ts": 1639807814818000128,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_104.109.0.51:0"
+        },
+        {
+            "label": "connect(23532)",
+            "ts": 1639807816787000064,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_169.229.216.14:0"
+        },
+        {
+            "label": "connect(23538)",
+            "ts": 1639807816851000064,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_104.108.158.200:0"
+        },
+        {
+            "label": "connect(23662)",
+            "ts": 1639807818811000064,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_23.185.0.2:0"
+        },
+        {
+            "label": "connect(24075)",
+            "ts": 1639807833328000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_23.185.0.1:0"
+        },
+        {
+            "label": "connect(25914)",
+            "ts": 1639807845508000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.138.115:0"
+        },
+        {
+            "label": "connect(25916)",
+            "ts": 1639807845508000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.138.46:0"
+        },
+        {
+            "label": "connect(25918)",
+            "ts": 1639807845508000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.138.116:0"
+        },
+        {
+            "label": "connect(25920)",
+            "ts": 1639807845508000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.138.119:0"
+        },
+        {
+            "label": "connect(26071)",
+            "ts": 1639807847496999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_172.67.22.130:0"
+        },
+        {
+            "label": "connect(26073)",
+            "ts": 1639807847496999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_104.22.3.106:0"
+        },
+        {
+            "label": "connect(26075)",
+            "ts": 1639807847500999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_104.22.2.106:0"
+        },
+        {
+            "label": "connect(26170)",
+            "ts": 1639807849532999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_151.101.128.239:0"
+        },
+        {
+            "label": "connect(26172)",
+            "ts": 1639807849532999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_151.101.192.239:0"
+        },
+        {
+            "label": "connect(26174)",
+            "ts": 1639807849532999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_151.101.64.239:0"
+        },
+        {
+            "label": "connect(26176)",
+            "ts": 1639807849532999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_151.101.0.239:0"
+        },
+        {
+            "label": "connect(26185)",
+            "ts": 1639807849552999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.128:0"
+        },
+        {
+            "label": "connect(26183)",
+            "ts": 1639807849552999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.13:0"
+        },
+        {
+            "label": "connect(26181)",
+            "ts": 1639807849552999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.94:0"
+        },
+        {
+            "label": "connect(26179)",
+            "ts": 1639807849548999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.29:0"
+        },
+        {
+            "label": "connect(24067)",
+            "ts": 1639807833324000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_142.250.76.197:0"
+        },
+        {
+            "label": "connect(24088)",
+            "ts": 1639807833348000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.107:0"
+        },
+        {
+            "label": "connect(24093)",
+            "ts": 1639807833348000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.69:0"
+        },
+        {
+            "label": "connect(24095)",
+            "ts": 1639807833348000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.89:0"
+        },
+        {
+            "label": "connect(24097)",
+            "ts": 1639807833348000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.124:0"
+        },
+        {
+            "label": "connect(24108)",
+            "ts": 1639807833372000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.64:0"
+        },
+        {
+            "label": "connect(24110)",
+            "ts": 1639807833376000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.6:0"
+        },
+        {
+            "label": "connect(24112)",
+            "ts": 1639807833376000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.43:0"
+        },
+        {
+            "label": "connect(24114)",
+            "ts": 1639807833376000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_54.182.0.40:0"
+        },
+        {
+            "label": "connect(24157)",
+            "ts": 1639807836320000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.141.156:0"
+        },
+        {
+            "label": "connect(24159)",
+            "ts": 1639807836320000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.141.126:0"
+        },
+        {
+            "label": "connect(24161)",
+            "ts": 1639807836320000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.141.37:0"
+        },
+        {
+            "label": "connect(24163)",
+            "ts": 1639807836320000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_13.227.141.180:0"
+        },
+        {
+            "label": "connect(25956)",
+            "ts": 1639807845612000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_34.107.221.82:0"
+        },
+        {
+            "label": "connect(25971)",
+            "ts": 1639807845644000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_192.0.0.171:0"
+        },
+        {
+            "label": "connect(25973)",
+            "ts": 1639807845644000000,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_192.0.0.170:0"
+        },
+        {
+            "label": "connect(26425)",
+            "ts": 1639807862816999936,
+            "source": "[3600]/usr/lib/firefox/firefox_56",
+            "target": "56_142.250.182.196:0"
+        },
+        {
+            "label": "accept4(26580)",
+            "ts": 1639807822723000064,
+            "source": "61_::ffff:127.0.0.1 48256",
+            "target": "[3588]/usr/sbin/apache2_61"
+        },
+        {
+            "label": "execve(24749)",
+            "ts": 1639807844332000000,
+            "source": "[3979]/usr/lib/firefox/firefox_67",
+            "target": "67_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "connect(24967)",
+            "ts": 1639807844384000000,
+            "source": "[3979]/usr/lib/firefox/firefox_67",
+            "target": "67_None:None"
+        },
+        {
+            "label": "accept4(24966)",
+            "ts": 1639807844384000000,
+            "source": "69_None None",
+            "target": "[698]/usr/bin/dbus-daemon_69"
+        },
+        {
+            "label": "execve(26773)",
+            "ts": 1639807881278000128,
+            "source": "[4015]/usr/bin/sudo_85",
+            "target": "85_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "connect(26975)",
+            "ts": 1639807881282000128,
+            "source": "[4015]/usr/bin/sudo_85",
+            "target": "85_None:None"
+        },
+        {
+            "label": "execve(26989)",
+            "ts": 1639807881286000128,
+            "source": "[4016]/usr/bin/bash_86",
+            "target": "86_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "execve(27010)",
+            "ts": 1639807881286000128,
+            "source": "[4017]/usr/bin/dash_87",
+            "target": "87_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "execve(27023)",
+            "ts": 1639807881289999872,
+            "source": "[4018]/usr/bin/basename_88",
+            "target": "88_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "execve(27039)",
+            "ts": 1639807881289999872,
+            "source": "[4019]/usr/bin/basename_89",
+            "target": "89_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "execve(27051)",
+            "ts": 1639807881289999872,
+            "source": "[4020]/usr/bin/systemctl_90",
+            "target": "90_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "connect(27080)",
+            "ts": 1639807881293999872,
+            "source": "[4020]/usr/bin/systemctl_90",
+            "target": "90_None:None"
+        },
+        {
+            "label": "execve(27101)",
+            "ts": 1639807881298000128,
+            "source": "[4023]/usr/bin/sed_92",
+            "target": "92_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "execve(27102)",
+            "ts": 1639807881298000128,
+            "source": "[4022]/usr/bin/systemctl_93",
+            "target": "93_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "connect(27151)",
+            "ts": 1639807881298000128,
+            "source": "[4022]/usr/bin/systemctl_93",
+            "target": "93_None:None"
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+Nodes: 5, Edges: 3, Num of Connected Components: 2

@@ -1,0 +1,1 @@
+Nodes: 89, Edges: 69, Num of Connected Components: 20

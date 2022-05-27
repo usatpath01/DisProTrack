@@ -1,0 +1,42 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "id": "[3247]/usr/bin/sed_50"
+        },
+        {
+            "id": "50_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "[3246]/usr/bin/systemctl_51"
+        },
+        {
+            "id": "51_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "id": "51_None:None"
+        }
+    ],
+    "links": [
+        {
+            "label": "execve(23237)",
+            "ts": 1639762166872000000,
+            "source": "[3247]/usr/bin/sed_50",
+            "target": "50_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "execve(23245)",
+            "ts": 1639762166872000000,
+            "source": "[3246]/usr/bin/systemctl_51",
+            "target": "51_/lib64/ld-linux-x86-64.so.2"
+        },
+        {
+            "label": "connect(23287)",
+            "ts": 1639762166876000000,
+            "source": "[3246]/usr/bin/systemctl_51",
+            "target": "51_None:None"
+        }
+    ]
+}
