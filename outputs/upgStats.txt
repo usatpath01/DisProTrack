@@ -66,3 +66,5 @@ Nodes: 88, Edges: 69, Num of Connected Components: 19
 Nodes: 88, Edges: 69, Num of Connected Components: 19
 Nodes: 88, Edges: 69, Num of Connected Components: 19
 Nodes: 88, Edges: 69, Num of Connected Components: 19
+Nodes: 22, Edges: 20, Num of Connected Components: 6
+Nodes: 22, Edges: 20, Num of Connected Components: 6

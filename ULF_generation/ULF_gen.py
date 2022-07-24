@@ -234,7 +234,7 @@ if __name__ == '__main__':
     #    print("Please provide the log file in the cmdline")
 
     # Parsinging teh audit log
-    parse_audit_log("samplelogs/audit_1640089505_merged.json")
+    parse_audit_log("/home/utkalika/Work/microservice_containers/apache_service/samplelogs/audit_logs/audit_merged.json")
 
     # #print("ACCESS LOG--->")
     # parse_acess_log("../logs/apache/rst1996/home/augumentedLogs/access.log")
@@ -244,10 +244,10 @@ if __name__ == '__main__':
     # parse_error_log("../logs/apache/testerror.log")
     
 
-    parse_error_log('samplelogs/access_1640089505.log')
+    parse_error_log('/home/utkalika/Work/microservice_containers/apache_service/samplelogs/access.log')
     # print('\n\n************Apache access log parsed\n\n')
 
-    parse_error_log('samplelogs/error_1640089505.log')
+    parse_error_log('/home/utkalika/Work/microservice_containers/apache_service/samplelogs/error.log')
     # print('\n\n************Apache access log parsed\n\n')
 
     # parse_error_log('mysql_logs/error_1633698258.log')
