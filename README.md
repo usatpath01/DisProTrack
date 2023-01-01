@@ -1,5 +1,5 @@
 
-# Project_ALV_2022
+# DisProTrack: Distributed Provenance Tracking over Serverless Applications
 
 # Environment Setup
 ## Install Oracle VirtualBox using CLI in Ubuntu
