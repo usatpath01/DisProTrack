@@ -210,9 +210,11 @@ This will generate a provenanceGraph.html file which is the graph. It can be vie
 
 ## Bibliography
 
+```bash
 @inproceedings{yang2023chirpkey,
   title={DisProTrack: Distributed Provenance Tracking over Serverless Applications},
   author={Satpathy, Utkalika and Thakur, Rishabh and Chattopadhyay, Subhrendu and Chakraborty, Sandip},
   booktitle={IEEE INFOCOM},
   year={2023}
 }
+```
