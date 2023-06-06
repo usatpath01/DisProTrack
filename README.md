@@ -1,6 +1,8 @@
 
 # DisProTrack: Distributed Provenance Tracking over Serverless Applications
 
+Utkalika Satpathy, Rishabh Thakur, Subhrendu Chattopadhyay, Sandip Chakraborty: "DisProTrack: Distributed Provenance Tracking over Serverless Applications", IEEE INFOCOM 2023
+
 # Environment Setup
 ## Install Oracle VirtualBox using CLI in Ubuntu
 1. Update current packages of the system to the latest version.
@@ -205,3 +207,12 @@ This will generate a provenanceGraph.html file which is the graph. It can be vie
 4. https://www.nakivo.com/blog/virtualbox-network-setting-guide/
 5. https://www.oracle.com/technical-resources/articles/it-infrastructure/admin-manage-vbox-cli.html
 6.  https://medium.com/platform-engineer/port-forwarding-for-ssh-http-on-virtualbox-459277a888be
+
+## Bibliography
+
+@inproceedings{yang2023chirpkey,
+  title={DisProTrack: Distributed Provenance Tracking over Serverless Applications},
+  author={Satpathy, Utkalika and Thakur, Rishabh and Chattopadhyay, Subhrendu and Chakraborty, Sandip},
+  booktitle={IEEE INFOCOM},
+  year={2023}
+}
